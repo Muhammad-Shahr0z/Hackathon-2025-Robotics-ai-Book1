@@ -23,7 +23,7 @@ const getApiUrl = () => {
   if (typeof window === 'undefined') return 'http://localhost:3001';
   return window.location.hostname === 'localhost'
     ? 'http://localhost:3001'
-    : 'https://rag-chatbot-backend-production-5f64.up.railway.app';
+    : 'https://hackathon-2025-robotics-ai-book1.vercel.app/api';
 };
 
 export function AuthProvider({ children }: { children: ReactNode }) {
