@@ -8,8 +8,6 @@ from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 
 from ..config import settings
-from ..services.qdrant_service import get_qdrant_service, QdrantService
-from ..services.openai_service import get_openai_service, OpenAIService
 from ..services.cache_service import get_cache_service, CacheService
 from ..services.rag_service import get_rag_service, RAGService
 from ..services.selection_service import get_selection_service, SelectionService

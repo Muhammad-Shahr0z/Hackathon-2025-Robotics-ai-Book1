@@ -8,7 +8,7 @@ export default function Root({ children }) {
     <AuthProvider>
       {children}
       <AuthModal />
-      <ChatWidget />
+      {/* <ChatWidget /> */}
     </AuthProvider>
   );
 }
