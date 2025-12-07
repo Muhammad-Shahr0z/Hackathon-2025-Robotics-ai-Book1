@@ -43,7 +43,7 @@ const config: Config = {
           routeBasePath: 'docs',
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/EngineerAbdulQadir/robotics-textbook/tree/master/book',
+            'https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1/tree/main/robotics-textbook/book',
           showLastUpdateTime: false,
         },
         blog: false, // Disable blog feature
@@ -62,7 +62,7 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'Robotics',
+      title: 'Humanoid Robotic AI',
       items: [
         {
           type: 'docSidebar',
@@ -71,7 +71,7 @@ const config: Config = {
           label: 'Learn',
         },
         {
-          href: 'https://github.com/EngineerAbdulQadir/robotics-textbook',
+          href: 'https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1',
           label: 'GitHub',
           position: 'right',
         },
@@ -114,15 +114,15 @@ const config: Config = {
           items: [
             {
               label: 'GitHub Repository',
-              href: 'https://github.com/EngineerAbdulQadir/robotics-textbook',
+              href: 'https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1',
             },
             {
               label: 'Report Issues',
-              href: 'https://github.com/EngineerAbdulQadir/robotics-textbook/issues',
+              href: 'https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1/issues',
             },
             {
               label: 'Discussions',
-              href: 'https://github.com/EngineerAbdulQadir/robotics-textbook/discussions',
+              href: 'https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1/discussions',
             },
             {
               label: 'ROS Discourse',
@@ -155,7 +155,7 @@ const config: Config = {
             },
             {
               label: 'Contributing Guide',
-              href: 'https://github.com/EngineerAbdulQadir/robotics-textbook/blob/master/CONTRIBUTING.md',
+              href: 'https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1/blob/main/CONTRIBUTING.md',
             },
           ],
         },

@@ -20,7 +20,7 @@ def test_settings_default_values(monkeypatch):
     assert settings.environment == "development"
     assert settings.debug is True
     assert settings.log_level == "INFO"
-    assert settings.allowed_origins == ["http://localhost:3000", "http://localhost:8000", "https://engineerabdulqadir.github.io"]
+    assert settings.allowed_origins == ["http://localhost:3000", "http://localhost:8000", "https://Muhammad-Shahr0z.github.io"]
     assert settings.redis_url == ""
     assert settings.rate_limit_enabled is True
 
