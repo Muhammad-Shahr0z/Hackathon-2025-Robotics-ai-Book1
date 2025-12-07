@@ -24,6 +24,7 @@ const config: Config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Muhammad-Shahr0z', // Usually your GitHub org/user name.
   projectName: 'Hackathon-2025-Robotics-ai-Book1', // Usually your repo name.
+  useSSH: true,
 
   onBrokenLinks: 'warn', // Allow deployment with "coming soon" chapters
 
