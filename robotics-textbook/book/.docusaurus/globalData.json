@@ -1,0 +1,123 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/Hackathon-2025-Robotics-ai-Book1/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/Hackathon-2025-Robotics-ai-Book1/docs",
+          "mainDocId": "introduction",
+          "docs": [
+            {
+              "id": "introduction",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-1/chapter-1",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-1",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-1/chapter-2",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-1/chapter-3",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-3",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-1/index",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-2/chapter-4",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-2/chapter-5",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-5",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-2/chapter-6",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-6",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-2/index",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-3/chapter-7",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-7",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-3/chapter-8",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-8",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-3/chapter-9",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-9",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-3/index",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-4/chapter-10",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-4/chapter-10",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-4/chapter-11",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-4/chapter-11",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-4/chapter-12",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-4/chapter-12",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-4/index",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-4/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-5/capstone",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-5/capstone",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-5/index",
+              "path": "/Hackathon-2025-Robotics-ai-Book1/docs/module-5/",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/Hackathon-2025-Robotics-ai-Book1/docs/",
+                "label": "Introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}
