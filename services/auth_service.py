@@ -13,41 +13,10 @@ import asyncpg
 from cryptography.fernet import Fernet
 import sys
 import os
-# Add the root directory to the path to allow imports from models
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'models'))
-
-# Try importing from root level first, then fallback to relative
-try:
-    from models.user import User
-    from models.session import AuthSession
-    from models.password_reset import PasswordResetToken
-except ImportError:
-    # Fallback for different execution contexts
-    try:
-        from user import User
-        from session import AuthSession
-        from password_reset import PasswordResetToken
-    except ImportError as e:
-        print(f"Import error in auth_service: {e}")
-        # Define minimal classes as fallback
-        class User:
-            def __init__(self, **kwargs):
-                for k, v in kwargs.items():
-                    setattr(self, k, v)
-            @classmethod
-            def from_db_record(cls, record):
-                return cls(**record)
-
-        class AuthSession:
-            def __init__(self, **kwargs):
-                for k, v in kwargs.items():
-                    setattr(self, k, v)
-
-        class PasswordResetToken:
-            def __init__(self, **kwargs):
-                for k, v in kwargs.items():
-                    setattr(self, k, v)
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from models.user import User
+from models.session import AuthSession
+from models.password_reset import PasswordResetToken
 
 
 class AuthService:

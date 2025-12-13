@@ -9,7 +9,35 @@ from qdrant_client.models import VectorParams, Distance, PointStruct
 import uuid, os
 from dotenv import load_dotenv
 
-from agents import AsyncOpenAI, OpenAIChatCompletionsModel, RunConfig, Agent, Runner, set_tracing_disabled
+# Import agents with error handling for serverless environments
+try:
+    from agents import AsyncOpenAI, OpenAIChatCompletionsModel, RunConfig, Agent, Runner, set_tracing_disabled
+except ImportError as e:
+    print(f"Agents import error: {e}")
+    # Define mock classes if import fails
+    class AsyncOpenAI:
+        def __init__(self, **kwargs):
+            pass
+        async def embeddings(self):
+            pass
+    class OpenAIChatCompletionsModel:
+        def __init__(self, **kwargs):
+            pass
+    class RunConfig:
+        def __init__(self, **kwargs):
+            pass
+    class Agent:
+        def __init__(self, **kwargs):
+            pass
+    class Runner:
+        @staticmethod
+        async def run(*args, **kwargs):
+            class Result:
+                final_output = "AI features disabled due to missing dependencies"
+            return Result()
+    def set_tracing_disabled(value):
+        pass
+    print("Warning: agents module not found, using mock classes")
 
 # Configure logging for serverless environment
 logging.basicConfig(level=logging.INFO)
@@ -18,8 +46,22 @@ logger = logging.getLogger(__name__)
 # Import Better Auth
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chatbot-agent'))
-from better_auth import add_auth_routes, initialize_auth
+# Add both the current directory and the chatbot-agent directory to the path
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chatbot-agent'))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# Try to import better_auth with error handling
+try:
+    from better_auth import add_auth_routes, initialize_auth
+except ImportError as e:
+    print(f"Import error: {e}")
+    # Create mock functions if import fails
+    def add_auth_routes(app):
+        pass
+    async def initialize_auth():
+        pass
+    print("Warning: better_auth module not found, using mock functions")
+
 
 # Load environment variables
 load_dotenv(override=True)
