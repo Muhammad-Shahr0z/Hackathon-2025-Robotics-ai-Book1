@@ -57,20 +57,28 @@ class AuthService:
 
     async def init_db(self):
         """Initialize the database connection pool"""
+        # For serverless environments, we'll create connections on demand
+        # rather than maintaining a persistent pool
         if not self.pool:
-            self.pool = await asyncpg.create_pool(
-                host=self.db_config['host'],
-                port=self.db_config['port'],
-                database=self.db_config['database'],
-                user=self.db_config['user'],
-                password=self.db_config['password'],
-                ssl=self.db_config['ssl'],
-                min_size=1,
-                max_size=10
-            )
+            # Create a single connection for this request context
+            # In serverless, connection pooling is not efficient
+            try:
+                self.pool = await asyncpg.create_pool(
+                    host=self.db_config['host'],
+                    port=self.db_config['port'],
+                    database=self.db_config['database'],
+                    user=self.db_config['user'],
+                    password=self.db_config['password'],
+                    ssl=self.db_config['ssl'],
+                    min_size=1,
+                    max_size=1  # Keep it minimal for serverless
+                )
 
-            # Create required tables if they don't exist
-            await self._create_tables()
+                # Create required tables if they don't exist
+                await self._create_tables()
+            except Exception as e:
+                print(f"Database connection error: {e}")
+                raise
 
     async def _create_tables(self):
         """Create required Better Auth tables"""

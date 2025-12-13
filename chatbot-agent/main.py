@@ -78,6 +78,11 @@ async def general_exception_handler(request, exc):
         content={"detail": "Internal server error"}
     )
 
+# Add a simple root endpoint for basic health check
+@app.get("/")
+async def root():
+    return {"message": "Robotics Textbook Chatbot API is running"}
+
 # Add CORS middleware to allow requests from the frontend
 app.add_middleware(
     CORSMiddleware,
@@ -194,8 +199,6 @@ async def health_check():
 # Add Better Auth routes to the app
 add_auth_routes(app)
 
-# Initialize Better Auth when the app starts
-import asyncio
-@app.on_event("startup")
-async def startup_event():
-    await initialize_auth()
+# For serverless environments, we'll initialize auth on first request if needed
+# Don't initialize auth at startup since Vercel functions are stateless
+# The auth initialization will happen per request as needed

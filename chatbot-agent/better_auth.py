@@ -168,13 +168,11 @@ class BetterAuth:
 
 
 # Initialize Better Auth instance
-auth = BetterAuth()
-
-
-async def get_auth():
-    """Get initialized auth instance"""
-    await auth.init_db()
-    return auth
+# We'll create a new instance per request in serverless environment
+# to avoid connection pool issues
+def get_auth():
+    """Get auth instance for serverless environments"""
+    return BetterAuth()
 
 
 # FastAPI routes for Better Auth
@@ -185,6 +183,10 @@ def add_auth_routes(app: FastAPI):
     async def signup_email(request: Request):
         """Sign up with email and password"""
         try:
+            # Initialize auth for this request
+            auth = get_auth()
+            await auth.init_db()
+
             data = await request.json()
             email = data.get('email')
             password = data.get('password')
@@ -236,6 +238,10 @@ def add_auth_routes(app: FastAPI):
     async def signin_email(request: Request):
         """Sign in with email and password"""
         try:
+            # Initialize auth for this request
+            auth = get_auth()
+            await auth.init_db()
+
             data = await request.json()
             email = data.get('email')
             password = data.get('password')
@@ -281,6 +287,10 @@ def add_auth_routes(app: FastAPI):
     async def signout_clear(request: Request):
         """Sign out by clearing session"""
         try:
+            # Initialize auth for this request
+            auth = get_auth()
+            await auth.init_db()
+
             # Get token from authorization header (frontend sends it in the Authorization header)
             auth_header = request.headers.get('Authorization', '')
             token = None
@@ -302,6 +312,10 @@ def add_auth_routes(app: FastAPI):
     async def get_session(request: Request):
         """Get current session"""
         try:
+            # Initialize auth for this request
+            auth = get_auth()
+            await auth.init_db()
+
             # Get token from authorization header
             auth_header = request.headers.get('Authorization', '')
             token = None
@@ -333,6 +347,10 @@ def add_auth_routes(app: FastAPI):
     async def request_password_reset(request: Request):
         """Request password reset"""
         try:
+            # Initialize auth for this request
+            auth = get_auth()
+            await auth.init_db()
+
             data = await request.json()
             email = data.get('email')
 
@@ -353,6 +371,10 @@ def add_auth_routes(app: FastAPI):
     async def reset_password(request: Request):
         """Reset password with token"""
         try:
+            # Initialize auth for this request
+            auth = get_auth()
+            await auth.init_db()
+
             data = await request.json()
             token = data.get('token')
             new_password = data.get('newPassword')
@@ -379,24 +401,26 @@ def add_auth_routes(app: FastAPI):
 # Initialize the auth system
 async def initialize_auth():
     """Initialize the auth system"""
+    auth = BetterAuth()
     await auth.init_db()
+    return auth
 
 if __name__ == "__main__":
     # For testing purposes
     async def test_auth():
-        await initialize_auth()
+        auth_instance = await initialize_auth()
         print("Better Auth initialized successfully")
 
         # Test user creation
-        user = await auth.create_user("test@example.com", "password123", "Test User")
+        user = await auth_instance.create_user("test", "user", "test@example.com", "password123")
         print(f"Created user: {user}")
 
         # Test sign in
-        session = await auth.create_session(user['id'])
+        session = await auth_instance.create_session(user['id'])
         print(f"Created session: {session}")
 
         # Test get session
-        retrieved_session = await auth.get_session_by_token(session['token'])
+        retrieved_session = await auth_instance.get_session_by_token(session['token'])
         print(f"Retrieved session: {retrieved_session}")
 
     # Uncomment to run test

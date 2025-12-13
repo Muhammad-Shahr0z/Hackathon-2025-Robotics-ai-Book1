@@ -4,7 +4,10 @@
     {
       "src": "chatbot-agent/main.py",
       "use": "@vercel/python",
-      "config": { "runtime": "python3.11" }
+      "config": {
+        "runtime": "python3.11",
+        "maxLambdaSize": "15mb"
+      }
     }
   ],
   "routes": [
@@ -12,5 +15,11 @@
       "src": "/(.*)",
       "dest": "chatbot-agent/main.py"
     }
-  ]
+  ],
+  "functions": {
+    "chatbot-agent/main.py": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  }
 }
