@@ -30,7 +30,8 @@ export interface ChatWidgetProps {
 }
 
 // Production backend URL - Update this after deploying to Render
-const PRODUCTION_API_URL = 'https://robotics-textbook-chatbot-backend.vercel.app';
+// Backend has been removed, so we'll use a placeholder or local development URL
+const PRODUCTION_API_URL = 'http://localhost:8000'; // Placeholder for removed backend
 
 export const ChatWidget: React.FC<ChatWidgetProps> = ({
   apiUrl = PRODUCTION_API_URL,

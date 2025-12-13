@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.specify/scripts/bash/setup-plan.sh --json)",
+      "Bash(dir \"D:\\Hackathon-2025-Robotics-ai-Book1\\specs\")",
+      "Bash(dir \"D:\\Hackathon-2025-Robotics-ai-Book1\\specs\\002-ui-redesign-theme\")",
+      "Bash(copy \"D:\\Hackathon-2025-Robotics-ai-Book1\\specs\\002-ui-redesign-theme\\spec.md\" \"D:\\Hackathon-2025-Robotics-ai-Book1\\specs\\002-ui-redesign-theme\\spec.md.bak\")",
+      "Bash(xcopy \"D:\\Hackathon-2025-Robotics-ai-Book1\\frontend\\src\\css\" \"D:\\Hackathon-2025-Robotics-ai-Book1\\specs\\002-ui-redesign-theme\\backups\\css-original\" /E /I)",
+      "Bash(find \"D:/Hackathon-2025-Robotics-ai-Book1/robotics-textbook/frontend/src/css\" -name \"*.css\" -exec grep -l \"button\\|btn\\|.button\\|button\\.\" {} ;)",
+      "Bash(find \"D:/Hackathon-2025-Robotics-ai-Book1/robotics-textbook/frontend/src\" -name \"*.css\" -exec grep -l \"input\\|form\\|textarea\\|select\" {} ;)",
+      "mcp__better-auth__search",
+      "mcp__better-auth__get_file",
+      "Bash(python -c \"from better_auth import initialize_auth; import asyncio; asyncio.run(initialize_auth()); print(''Better Auth initialized successfully'')\")",
+      "Bash(timeout 10 uvicorn main:app --host 0.0.0.0 --port 8000)",
+      "Bash(python validate_implementation.py)"
+    ]
+  }
+}

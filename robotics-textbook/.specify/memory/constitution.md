@@ -537,13 +537,6 @@ physical-ai-textbook/
 │   │   ├── components/     # Chatbot UI, translation buttons
 │   │   └── theme/          # Customized Docusaurus theme
 │   └── static/             # Images, diagrams, assets
-├── chatbot-backend/        # FastAPI RAG service
-│   ├── app/
-│   │   ├── agents/         # OpenAI Agents integration
-│   │   ├── rag/            # Retrieval logic (Qdrant)
-│   │   ├── auth/           # Better-Auth integration
-│   │   └── api/            # REST endpoints
-│   └── tests/              # Backend tests
 ├── code-examples/          # ROS 2, Gazebo, Isaac code
 │   ├── ros2_packages/
 │   ├── gazebo_worlds/

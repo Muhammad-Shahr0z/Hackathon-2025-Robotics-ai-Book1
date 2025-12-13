@@ -1,0 +1,51 @@
+# Docusaurus Project Structure
+
+## Directory Structure
+```
+robotics-textbook/
+├── frontend/
+│   ├── docs/
+│   ├── node_modules/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── contexts/
+│   │   ├── css/
+│   │   │   ├── custom.css
+│   │   │   ├── docs-ui.css
+│   │   │   └── homepage.css
+│   │   ├── pages/
+│   │   └── theme/
+│   ├── static/
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── docusaurus.config.ts
+│   ├── sidebars.ts
+│   ├── tsconfig.json
+│   └── README.md
+├── ChatWidget/
+│   └── src/
+│       ├── styles/
+│       └── components/
+├── auth-backend/
+├── chatbot-agent/
+├── .specify/
+├── specs/
+└── history/
+```
+
+## Current CSS Files
+- custom.css: Main custom styles for the Docusaurus site
+- docs-ui.css: Styles specific to documentation UI elements
+- homepage.css: Styles specific to homepage components
+
+## Key Technologies
+- Docusaurus v3.x (based on configuration)
+- React components
+- TypeScript
+- CSS modules
+
+## Architecture Notes
+- Docusaurus-based educational platform
+- Component-based architecture
+- Custom theme and styling
+- ChatWidget integration for RAG functionality

@@ -399,21 +399,9 @@ npm run dev
 
 ### Integration Testing with Backend
 ```bash
-# 1. Start backend
-cd chatbot-backend
-python -m uvicorn src.main:app --reload
-
-# 2. Test widget with API
-curl http://localhost:8000/api/v1/health
-
-# 3. Send test query
-curl -X POST http://localhost:8000/api/v1/chat/query \
-  -H "Content-Type: application/json" \
-  -d '{
-    "question": "What is AI?",
-    "session_id": "test-session",
-    "page_context": "AI textbook"
-  }'
+# Note: chatbot-backend has been removed from the project
+# The ChatWidget now uses placeholder URLs and graceful degradation
+# To test with a backend, implement a new backend service and update the API_URL
 ```
 
 ## Known Limitations & Future Improvements
