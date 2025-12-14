@@ -77,6 +77,7 @@ dependencies = [
     { name = "openai-agents" },
     { name = "python-dotenv" },
     { name = "qdrant-client" },
+    { name = "uvicorn" },
 ]
 
 [package.metadata]
@@ -88,6 +89,7 @@ requires-dist = [
     { name = "openai-agents", specifier = ">=0.0.19" },
     { name = "python-dotenv", specifier = ">=1.1.0" },
     { name = "qdrant-client", specifier = ">=1.16.1" },
+    { name = "uvicorn", specifier = ">=0.34.0" },
 ]
 
 [[package]]
