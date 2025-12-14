@@ -162,6 +162,8 @@ export default function PersonalizeButton({
 
   return (
     <div className={styles.container}>
+      {/* Personalize and Translate UI commented out per request */}
+      {/*
       <button
         className={`${styles.personalizeBtn} ${status !== 'idle' ? styles[status] : ''}`}
         onClick={handlePersonalize}
@@ -207,7 +209,7 @@ export default function PersonalizeButton({
           </>
         )}
       </button>
-      
+
       {message && (
         <div className={`${styles.message} ${styles[status]}`}>
           {message}
@@ -219,6 +221,7 @@ export default function PersonalizeButton({
           Content will be adapted to your experience level and learning goals
         </p>
       )}
+      */}
 
       {personalizedContent && (
         <button
