@@ -20,7 +20,7 @@ async def health():
     }
 
 # register better auth routes
-add_auth_routes(app)
+# add_auth_routes(app)
 
 
 
