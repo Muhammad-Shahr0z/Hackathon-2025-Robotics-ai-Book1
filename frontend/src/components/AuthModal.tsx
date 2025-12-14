@@ -214,12 +214,18 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
   };
 
   const handleSignOut = async () => {
+    setLoading(true);
     try {
       // Call custom sign-out endpoint that clears HTTP-only cookies
-      await fetch(`${API_URL}/api/auth/sign-out-clear`, {
+      const response = await fetch(`${API_URL}/api/auth/sign-out-clear`, {
         method: 'POST',
         credentials: 'include',
       });
+
+      if (!response.ok) {
+        const errText = await response.text().catch(() => '');
+        console.error('Sign out returned non-OK:', response.status, errText);
+      }
 
       // Clear user state and local storage
       setUser(null);
@@ -239,6 +245,8 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
         onClose();
         window.location.reload();
       }, 500);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -299,9 +307,19 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
             <button
               className={styles.signOutBtn}
               onClick={handleSignOut}
+              disabled={loading}
             >
-              <LogOut size={18} />
-              Sign Out
+              {loading ? (
+                <>
+                  <div className={styles.spinner}></div>
+                  Signing out...
+                </>
+              ) : (
+                <>
+                  <LogOut size={18} />
+                  Sign Out
+                </>
+              )}
             </button>
           </div>
         ) : (
