@@ -12,7 +12,7 @@ interface AuthModalProps {
 // Backend API URL - points to Better Auth backend
 const getApiUrl = () => {
  // Update this to your deployed backend URL
-  return 'https://hackathon-2025-robotics-ai-book1.vercel.app/';
+  return 'https://hackathon-2025-robotics-ai-book1-sr.vercel.app/';
           // 'http://localhost:8000';
 };
 

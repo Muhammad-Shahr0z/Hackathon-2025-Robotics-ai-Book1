@@ -23,9 +23,7 @@ if (typeof document !== 'undefined') {
   }
 }
 
-const API_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-  ? 'http://localhost:8000'
-  : 'https://hackathon-2025-robotics-ai-book1.vercel.app/'; // Backend has been removed, using placeholder
+const API_URL = "https://hackathon-2025-robotics-ai-book1-sr.vercel.app/"
 
 interface Message {
   id: string;

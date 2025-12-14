@@ -29,12 +29,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Backend API URL - points to Better Auth backend
-const getApiUrl = () => {
-  if (typeof window === 'undefined') return 'http://localhost:8000';
-  return window.location.hostname === 'localhost'
-    ? 'http://localhost:8000'
-    : 'https://hackathon-2025-robotics-ai-book1.vercel.app/'; // Update this to your deployed backend URL
-};
+const getApiUrl = "https://hackathon-2025-robotics-ai-book1-sr.vercel.app/"
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUserState] = useState<User | null>(null);
@@ -99,7 +94,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       // If no valid stored data, check with backend
-      const response = await fetch(`${getApiUrl()}/api/auth/get-session`, {
+      const response = await fetch(`${getApiUrl}/api/auth/get-session`, {
         credentials: 'include',
       });
 

@@ -46,13 +46,21 @@ async def root():
     return {"message": "Robotics Textbook Chatbot API is running"}
 
 # CORS middleware: allow all origins, headers, methods
+# CORS middleware: allow only specific origins
+origins = [
+    "https://hackathon-2025-robotics-ai-book1-sr.vercel.app",
+    "http://localhost:3000",
+    "*"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins
+    allow_origins=origins,  # Only these origins allowed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
 
 # Health check
 @app.get("/health")
