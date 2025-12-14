@@ -3,16 +3,23 @@ name = "basic-agent-chainlit"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12,<3.13"
 dependencies = [
-    "fastapi[standard]>=0.124.0",
-    "uvicorn>=0.34.0",
-    "openai-agents>=0.0.19",
+"python-dotenv==1.0.0",
+   "uvicorn==0.24.0",
     "python-dotenv>=1.1.0",
-    "qdrant-client>=1.16.1",
     "asyncpg>=0.29.0",
     "bcrypt>=4.0.1",
     "cryptography>=41.0.0",
+    "fastapi==0.124.0",
+    "openai-agents==0.6.2",
+    "qdrant-client>=1.16.1", 
+    "pydantic==2.12.3",
+    "pydantic-core==2.41.4",
+    "requests==2.31.0",
+    "python-multipart==0.0.9",
 ]
+
+
 
 
