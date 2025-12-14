@@ -4,17 +4,10 @@ This file implements Better Auth with MCP server integration for both authentica
 """
 import os
 from typing import Optional, Dict, Any
-from fastapi import FastAPI, Request, Response, HTTPException
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
-import asyncio
-import asyncpg
-from urllib.parse import urlparse
-import secrets
-import hashlib
-import datetime
-from cryptography.fernet import Fernet
-import json
+
 
 # Import our new service and model files
 import sys
@@ -22,12 +15,9 @@ import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from services.auth_service import AuthService
 from services.validation import ValidationService
-from models.user import User
-from models.session import AuthSession
-from models.password_reset import PasswordResetToken
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
 class BetterAuth:
     """
@@ -405,23 +395,3 @@ async def initialize_auth():
     await auth.init_db()
     return auth
 
-if __name__ == "__main__":
-    # For testing purposes
-    async def test_auth():
-        auth_instance = await initialize_auth()
-        print("Better Auth initialized successfully")
-
-        # Test user creation
-        user = await auth_instance.create_user("test", "user", "test@example.com", "password123")
-        print(f"Created user: {user}")
-
-        # Test sign in
-        session = await auth_instance.create_session(user['id'])
-        print(f"Created session: {session}")
-
-        # Test get session
-        retrieved_session = await auth_instance.get_session_by_token(session['token'])
-        print(f"Retrieved session: {retrieved_session}")
-
-    # Uncomment to run test
-    # asyncio.run(test_auth())
