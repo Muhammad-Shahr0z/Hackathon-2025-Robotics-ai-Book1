@@ -4,8 +4,9 @@ This file implements Better Auth with MCP server integration for both authentica
 """
 import os
 from typing import Optional, Dict, Any
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Body
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 
@@ -169,18 +170,34 @@ def get_auth():
 def add_auth_routes(app: FastAPI):
     """Add Better Auth routes to FastAPI app"""
 
+    # Request body models so OpenAPI/Swagger shows payload fields
+    class SignUpRequest(BaseModel):
+        email: str
+        password: str
+        name: Optional[str] = None
+
+    class SignInRequest(BaseModel):
+        email: str
+        password: str
+
+    class RequestPasswordResetRequest(BaseModel):
+        email: str
+
+    class ResetPasswordRequest(BaseModel):
+        token: str
+        newPassword: str = Field(..., alias="newPassword")
+
     @app.post("/api/auth/sign-up/email")
-    async def signup_email(request: Request):
+    async def signup_email(payload: SignUpRequest = Body(...)):
         """Sign up with email and password"""
         try:
             # Initialize auth for this request
             auth = get_auth()
             await auth.init_db()
 
-            data = await request.json()
-            email = data.get('email')
-            password = data.get('password')
-            name = data.get('name', '')  # This could be a full name that we'll split
+            email = payload.email
+            password = payload.password
+            name = payload.name or ''
 
             # For better compliance with our data model, we should split the name
             # In a real implementation, the frontend would send first_name and last_name separately
@@ -225,16 +242,15 @@ def add_auth_routes(app: FastAPI):
             raise HTTPException(status_code=500, detail="Internal server error")
 
     @app.post("/api/auth/sign-in/email")
-    async def signin_email(request: Request):
+    async def signin_email(payload: SignInRequest = Body(...)):
         """Sign in with email and password"""
         try:
             # Initialize auth for this request
             auth = get_auth()
             await auth.init_db()
 
-            data = await request.json()
-            email = data.get('email')
-            password = data.get('password')
+            email = payload.email
+            password = payload.password
 
             if not email or not password:
                 raise HTTPException(status_code=400, detail="Email and password are required")
@@ -334,15 +350,14 @@ def add_auth_routes(app: FastAPI):
             return JSONResponse({"user": None})
 
     @app.post("/api/auth/request-password-reset")
-    async def request_password_reset(request: Request):
+    async def request_password_reset(payload: RequestPasswordResetRequest = Body(...)):
         """Request password reset"""
         try:
             # Initialize auth for this request
             auth = get_auth()
             await auth.init_db()
 
-            data = await request.json()
-            email = data.get('email')
+            email = payload.email
 
             if not email:
                 raise HTTPException(status_code=400, detail="Email is required")
@@ -358,16 +373,16 @@ def add_auth_routes(app: FastAPI):
             raise HTTPException(status_code=500, detail="Internal server error")
 
     @app.post("/api/auth/reset-password")
-    async def reset_password(request: Request):
+    async def reset_password(payload: ResetPasswordRequest = Body(...)):
         """Reset password with token"""
         try:
             # Initialize auth for this request
             auth = get_auth()
             await auth.init_db()
 
-            data = await request.json()
-            token = data.get('token')
-            new_password = data.get('newPassword')
+            token = payload.token
+            # pydantic alias ensures incoming field `newPassword` maps here
+            new_password = payload.newPassword
 
             if not token or not new_password:
                 raise HTTPException(status_code=400, detail="Token and new password are required")
