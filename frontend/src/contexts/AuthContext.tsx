@@ -33,7 +33,7 @@ const getApiUrl = () => {
   if (typeof window === 'undefined') return 'http://localhost:8000';
   return window.location.hostname === 'localhost'
     ? 'http://localhost:8000'
-    : 'http://localhost:8000'; // Update this to your deployed backend URL
+    : 'https://hackathon-2025-robotics-ai-book1.vercel.app/'; // Update this to your deployed backend URL
 };
 
 export function AuthProvider({ children }: { children: ReactNode }) {

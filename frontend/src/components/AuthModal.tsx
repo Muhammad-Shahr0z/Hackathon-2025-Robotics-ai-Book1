@@ -11,10 +11,9 @@ interface AuthModalProps {
 
 // Backend API URL - points to Better Auth backend
 const getApiUrl = () => {
-  if (typeof window === 'undefined') return 'http://localhost:8000';
-  return window.location.hostname === 'localhost'
-    ? 'http://localhost:8000'
-    : 'http://localhost:8000'; // Update this to your deployed backend URL
+ // Update this to your deployed backend URL
+  return 'https://hackathon-2025-robotics-ai-book1.vercel.app/';
+          // 'http://localhost:8000';
 };
 
 export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, onAuthSuccess }: AuthModalProps) {
