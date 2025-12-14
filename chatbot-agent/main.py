@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-import os
-import sys
+# import os
+# import sys
 
-# allow local imports
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# # allow local imports
+# sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from better_auth import add_auth_routes
+# from better_auth import add_auth_routes
 
 app = FastAPI(
     title="Better Auth API",
@@ -20,7 +20,7 @@ async def health():
     }
 
 # register better auth routes
-add_auth_routes(app)
+# add_auth_routes(app)
 
 
 
