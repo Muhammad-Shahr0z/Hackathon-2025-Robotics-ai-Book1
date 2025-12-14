@@ -202,3 +202,9 @@ add_auth_routes(app)
 # For serverless environments, we'll initialize auth on first request if needed
 # Don't initialize auth at startup since Vercel functions are stateless
 # The auth initialization will happen per request as needed
+
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=5001, reload=True)
