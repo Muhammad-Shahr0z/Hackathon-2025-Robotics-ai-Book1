@@ -204,6 +204,12 @@
 .navbar__title {
   margin-left: 6px !important;
 }
+.footer {
+  background: #2563EB !important;
+  border-top: none !important;
+  padding: 3rem 0 !important;
+}
+
  
 
 .footer__title {
@@ -216,13 +222,13 @@
 }
 
 .footer__item {
-  color: #dbeafe !important;
+  color: #ffffff !important;
   font-size: 0.875rem !important;
   line-height: 2 !important;
 }
 
 .footer__link-item {
-  color: #dbeafe !important;
+  color: #ffffff !important;
   transition: color 0.2s ease !important;
 }
 
@@ -232,7 +238,7 @@
 }
 
 .footer__copyright {
-  color: #bfdbfe !important;
+  color: #ffffff !important;
   font-size: 0.875rem !important;
   margin-top: 2rem !important;
   padding-top: 2rem !important;

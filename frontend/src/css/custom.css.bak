@@ -11,52 +11,112 @@
 
 /* Modern Blue & White Theme */
 :root {
-  /* Primary Blue Theme */
-  --ifm-color-primary: #2563eb;
-  --ifm-color-primary-dark: #1d4ed8;
-  --ifm-color-primary-darker: #1e40af;
-  --ifm-color-primary-darkest: #1e3a8a;
-  --ifm-color-primary-light: #3b82f6;
-  --ifm-color-primary-lighter: #60a5fa;
-  --ifm-color-primary-lightest: #93c5fd;
-  
+  /* Primary Blue Theme - Updated for futuristic tech theme */
+  --ifm-color-primary: #0066CC;
+  --ifm-color-primary-dark: #0055AA;
+  --ifm-color-primary-darker: #004499;
+  --ifm-color-primary-darkest: #003377;
+  --ifm-color-primary-light: #0099FF;
+  --ifm-color-primary-lighter: #33AAFF;
+  --ifm-color-primary-lightest: #66CCFF;
+
   /* Light Background */
   --ifm-background-color: #ffffff;
   --ifm-background-surface-color: #f8fafc;
-  
+
   /* Text Colors */
   --ifm-font-color-base: #1a1a1a;
   --ifm-font-color-secondary: #64748b;
-  
+
   /* Code */
   --ifm-code-font-size: 0.875rem;
-  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.1);
-  
+  --docusaurus-highlighted-code-line-bg: rgba(0, 102, 204, 0.1);
+
   /* Borders */
   --ifm-color-emphasis-200: #e2e8f0;
   --ifm-color-emphasis-300: #cbd5e1;
-  
+
   /* Sidebar */
   --ifm-menu-color: #4a5568;
-  --ifm-menu-color-active: #2563eb;
+  --ifm-menu-color-active: #0066CC;
   --ifm-menu-color-background-active: transparent;
   --doc-sidebar-width: 280px;
-  
+
   /* TOC */
   --ifm-toc-border-color: transparent;
   --ifm-toc-link-color: #4a5568;
+
+  /* =============================
+  /* DESIGN TOKENS - Futuristic Tech Theme */
+  /* ============================= */
+
+  /* Primary Colors */
+  --color-primary-500: #0066CC;
+  --color-primary-600: #0099FF;
+
+  /* Secondary Colors */
+  --color-secondary-500: #6600CC;
+  --color-secondary-600: #9966FF;
+
+  /* Accent Colors */
+  --color-accent-500: #00FFFF;
+  --color-accent-600: #CC66FF;
+
+  /* Status Colors */
+  --color-success: #00CC66;
+  --color-warning: #FF9900;
+  --color-error: #FF3333;
+
+  /* Background Colors */
+  --color-background-default: #FFFFFF;
+  --color-background-surface: #F8F9FA;
+
+  /* Text Colors */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+
+  /* Typography */
+  --font-family: 'Inter', 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+
+  /* Spacing Scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-xxxl: 64px;
+
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-elevated: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Dark mode override (if needed) */
 [data-theme='dark'] {
-  --ifm-color-primary: #3b82f6;
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #bfdbfe;
-  
+  --ifm-color-primary: #0099FF;
+  --ifm-color-primary-dark: #0077CC;
+  --ifm-color-primary-darker: #0055AA;
+  --ifm-color-primary-darkest: #003377;
+  --ifm-color-primary-light: #33AAFF;
+  --ifm-color-primary-lighter: #66CCFF;
+  --ifm-color-primary-lightest: #99DDFF;
+
   --ifm-background-color: #0f172a;
   --ifm-background-surface-color: #1e293b;
   --ifm-font-color-base: #f1f5f9;
@@ -70,14 +130,24 @@
 .navbar {
   background: #ffffff !important;
   border-bottom: 1px solid #e5e7eb !important;
-  box-shadow: none !important;
-  padding: 0.75rem 1rem !important;
+  box-shadow: 0 4px 18px rgba(16,24,40,0.06) !important;
+  padding: 0.5rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 64px !important;
+  z-index: 9999 !important;
 }
 
 .navbar__title {
   font-weight: 700 !important;
   color: #1a1a1a !important;
   font-size: 1.25rem !important;
+  line-height: 1 !important;
 }
 
 .navbar__link {
@@ -86,22 +156,61 @@
 }
 
 .navbar__link:hover {
-  color: #2563eb !important;
+  color: var(--ifm-color-primary) !important;
 }
 
-.navbar__logo img {
-  border-radius: 6px;
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navbar__inner {
+  align-items: center !important;
 }
 
-/* ============================================
-   Modern Footer Styling - Blue Theme
-   ============================================ */
+/* Reserve space so page content isn't hidden under fixed navbar */
+.main-wrapper,
+.docMainContainer,
+.theme-doc-markdown {
+  padding-top: 72px !important;
+}
 
+.navbar__items {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.navbar__item {
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* Space out GitHub link and auth button in the navbar */
+.navbar__items a[href*="github.com"] {
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.navbar__items .authButton {
+  margin-left: 0.5rem !important;
+  margin-right: 0.25rem !important;
+}
+
+.navbar__link {
+  padding: 0.25rem 0.4rem !important;
+}
+
+.navbar__title {
+  margin-left: 6px !important;
+}
 .footer {
-  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%) !important;
+  background: #2563EB !important;
   border-top: none !important;
   padding: 3rem 0 !important;
 }
+
+ 
 
 .footer__title {
   color: #ffffff !important;
@@ -124,7 +233,7 @@
 }
 
 .footer__link-item:hover {
-  color: #ffffff !important;
+  color: var(--color-accent-500) !important;
   text-decoration: none !important;
 }
 
@@ -185,7 +294,7 @@
 }
 
 .modal .submitBtn:hover {
-  background: #1d4ed8 !important;
+  background: var(--ifm-color-primary-dark) !important;
 }
 
 .modal .signOutBtn {
@@ -197,11 +306,11 @@
 }
 
 .modal .signOutBtn:hover {
-  background: #dc2626 !important;
+  background: var(--color-error) !important;
 }
 
 .modal .toggleBtn {
-  color: #2563eb !important;
+  color: var(--ifm-color-primary) !important;
   font-weight: 600 !important;
   background: none !important;
   border: none !important;
@@ -311,15 +420,15 @@ article {
 
 /* Links */
 .markdown a {
-  color: #2563eb !important;
+  color: var(--ifm-color-primary) !important;
   text-decoration: none !important;
   border-bottom: 1px solid transparent !important;
   transition: all 0.2s ease !important;
 }
 
 .markdown a:hover {
-  color: #1d4ed8 !important;
-  border-bottom-color: #2563eb !important;
+  color: var(--ifm-color-primary-dark) !important;
+  border-bottom-color: var(--ifm-color-primary) !important;
 }
 
 /* Code blocks */
@@ -374,7 +483,7 @@ article {
 }
 
 .markdown tr:hover {
-  background: #f8fafc !important;
+  background: var(--ifm-background-surface-color) !important;
 }
 
 /* Admonitions (tips, warnings, etc.) */
@@ -448,15 +557,15 @@ aside[class*="sidebar"]::-webkit-scrollbar {
 }
 
 .menu__link:hover {
-  background: transparent !important;
-  color: #2563eb !important;
+  background: var(--ifm-background-surface-color) !important;
+  color: var(--ifm-color-primary) !important;
 }
 
 .menu__link--active {
-  background: #eff6ff !important;
-  color: #2563eb !important;
+  background: var(--color-background-surface) !important;
+  color: var(--ifm-color-primary) !important;
   font-weight: 700 !important;
-  border-left: 3px solid #2563eb !important;
+  border-left: 3px solid var(--ifm-color-primary) !important;
   border-radius: 4px !important;
   padding-left: calc(1rem - 3px) !important;
 }
@@ -517,12 +626,12 @@ aside[class*="sidebar"]::-webkit-scrollbar {
 }
 
 .pagination-nav__link:hover {
-  border-color: #2563eb !important;
-  background: #f8fafc !important;
+  border-color: var(--ifm-color-primary) !important;
+  background: var(--color-background-surface) !important;
 }
 
 .pagination-nav__label {
-  color: #2563eb !important;
+  color: var(--ifm-color-primary) !important;
   font-weight: 600 !important;
 }
 
@@ -555,12 +664,12 @@ aside[class*="sidebar"]::-webkit-scrollbar {
 }
 
 .table-of-contents__link:hover {
-  color: #2563eb !important;
-  border-left-color: #93c5fd !important;
+  color: var(--ifm-color-primary) !important;
+  border-left-color: var(--ifm-color-primary-light) !important;
 }
 
 .table-of-contents__link--active {
-  color: #2563eb !important;
+  color: var(--ifm-color-primary) !important;
   font-weight: 600 !important;
-  border-left-color: #2563eb !important;
+  border-left-color: var(--ifm-color-primary) !important;
 }
