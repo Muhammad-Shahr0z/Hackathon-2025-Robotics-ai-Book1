@@ -14,7 +14,7 @@ const getApiUrl = () => {
   if (typeof window === 'undefined') return 'http://localhost:3001';
   return window.location.hostname === 'localhost'
     ? 'http://localhost:3001'
-    : 'https://hackathon-2025-robotics-ai-book1.vercel.app/api';
+    : 'https://hackathon-2025-robotics-ai-book1-sr.vercel.app/api';
 };
 
 export default function PersonalizeButton({ 
