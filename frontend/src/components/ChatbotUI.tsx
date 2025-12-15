@@ -147,16 +147,16 @@ const ChatbotUI: React.FC = () => {
         window.innerWidth <= 768
       ) {
         // Check if click is on toggle button (don't close in that case)
-        const toggleButton = document.querySelector('.chat-toggle-button');
+        const toggleButton = document.querySelector(".chat-toggle-button");
         if (toggleButton && !toggleButton.contains(event.target as Node)) {
           toggleChat();
         }
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [state.isOpen]);
 
@@ -164,66 +164,66 @@ const ChatbotUI: React.FC = () => {
     <>
       {/* Chat Window */}
       {state.isOpen && (
-        <div 
-          style={{ zIndex: 9999999 }} 
+        <div
+          style={{ zIndex: 9999999 }}
           className="chat-window"
           ref={chatWindowRef}
         >
-     {/* New Blue Header with AI Icon */}
-<div className="chat-header-blue">
-  <div className="header-left">
-    <div className="ai-robot-icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
-        <path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.92 6-4.72 7.28L13 17v5h5l-1.22-2.33C19.91 17.81 22 14.64 22 11c0-5.18-3.95-9.45-9-9.95zM11 2.05C6.05 2.55 2 6.82 2 11c0 3.64 2.09 6.81 5.22 8.67L6 22h5v-5l-2.28 1.28C5.92 17.99 4 15.2 4 12c0-4.08 3.05-7.44 7-7.93V2.05z" />
-      </svg>
-    </div>
-    <div className="header-content">
-      <h3>AI Assistant</h3>
-      <p className="header-subtitle">Online • Ready to help</p>
-    </div>
-  </div>
-  <div className="header-right">
-    {/* Clear button with trash icon */}
-    <button
-      className="header-icon-button"
-      onClick={clearChat}
-      aria-label="Clear chat"
-      title="Clear chat"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        width="20"
-        height="20"
-      >
-        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
-      </svg>
-    </button>
-    
-    {/* Close button with X icon */}
-    <button
-      className="header-icon-button"
-      onClick={toggleChat}
-      aria-label="Close chat"
-      title="Close chat"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        width="20"
-        height="20"
-      >
-        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-      </svg>
-    </button>
-  </div>
-</div>
+          {/* New Blue Header with AI Icon */}
+          <div className="chat-header-blue">
+            <div className="header-left">
+              <div className="ai-robot-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.92 6-4.72 7.28L13 17v5h5l-1.22-2.33C19.91 17.81 22 14.64 22 11c0-5.18-3.95-9.45-9-9.95zM11 2.05C6.05 2.55 2 6.82 2 11c0 3.64 2.09 6.81 5.22 8.67L6 22h5v-5l-2.28 1.28C5.92 17.99 4 15.2 4 12c0-4.08 3.05-7.44 7-7.93V2.05z" />
+                </svg>
+              </div>
+              <div className="header-content">
+                <h3>AI Assistant</h3>
+                <p className="header-subtitle">Online • Ready to help</p>
+              </div>
+            </div>
+            <div className="header-right">
+              {/* Clear button with trash icon */}
+              <button
+                className="header-icon-button"
+                onClick={clearChat}
+                aria-label="Clear chat"
+                title="Clear chat"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  width="20"
+                  height="20"
+                >
+                  <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                </svg>
+              </button>
+
+              {/* Close button with X icon */}
+              <button
+                className="header-icon-button"
+                onClick={toggleChat}
+                aria-label="Close chat"
+                title="Close chat"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  width="20"
+                  height="20"
+                >
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+              </button>
+            </div>
+          </div>
           <div className="chat-messages">
             {/* Welcome Message */}
             {state.messages.length === 0 && (
@@ -295,10 +295,10 @@ const ChatbotUI: React.FC = () => {
                 )}
                 <div className="message-content-wrapper">
                   <div className="message-content">
-                    {message.content.split(' ').map((word, index, array) => (
+                    {message.content.split(" ").map((word, index, array) => (
                       <React.Fragment key={index}>
                         <span className="message-word">{word}</span>
-                        {index < array.length - 1 && ' '}
+                        {index < array.length - 1 && " "}
                       </React.Fragment>
                     ))}
                   </div>
