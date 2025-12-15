@@ -11,6 +11,7 @@ const cards = [
 ];
 
 export default function HeroCarousel() {
+ 
   const loop = [...cards, ...cards];
   return (
     <section className={styles.carousel} aria-hidden="false">
@@ -19,7 +20,7 @@ export default function HeroCarousel() {
         {loop.map((c, i) => (
           <article key={`${c.title}-${i}`} className={styles.card}>
             <div className={styles.cardLogo} aria-hidden>
-              <img src="/img/logo.png" alt="logo" />
+             <img src="/img/robologo.png" alt="robologo" />
             </div>
             <h4 className={styles.cardTitle}>{c.title}</h4>
             <p className={styles.cardDesc}>{c.desc}</p>
