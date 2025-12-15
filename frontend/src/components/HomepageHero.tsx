@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import '../css/homepage.css';
+import ChatbotUI from './ChatbotUI';
 
 export default function HomepageHero() {
   return (
@@ -46,6 +47,7 @@ export default function HomepageHero() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }
