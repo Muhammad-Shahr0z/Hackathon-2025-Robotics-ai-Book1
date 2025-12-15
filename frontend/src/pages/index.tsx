@@ -5,6 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
+import HeroCarousel from '@site/src/components/HeroCarousel/HeroCarousel';
 import { useAuth } from "@site/src/contexts/AuthContext";
 import { BookOpen, User } from "lucide-react";
 
@@ -16,21 +17,24 @@ function HomepageHeader() {
 
   return (
     <header className={styles.heroBanner}>
-      <div className="container">
-        <Heading as="h1" className={styles.title}>
-          {siteConfig.title}
-        </Heading>
-        <p className={styles.subtitle}>{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className={styles.primaryButton} to="/docs">
-            <BookOpen size={20} />
-            <span>Start Learning</span>
-          </Link>
-          <button className={styles.secondaryButton} onClick={openAuthModal}>
-            <User size={20} />
-            <span>{user ? user.name || user.email : "Sign In"}</span>
-          </button>
+      <div className="container" style={{ height: '100%' }}>
+        <div className={styles.heroInner}>
+          <Heading as="h1" className={styles.title}>
+            {siteConfig.title}
+          </Heading>
+          <p className={styles.subtitle}>{siteConfig.tagline}</p>
+          <div className={styles.buttons}>
+            <Link className={styles.primaryButton} to="/docs">
+              <BookOpen size={20} />
+              <span>Start Learning</span>
+            </Link>
+            <button className={styles.secondaryButton} onClick={openAuthModal}>
+              <User size={20} />
+              <span>{user ? user.name || user.email : "Sign In"}</span>
+            </button>
+          </div>
         </div>
+        <HeroCarousel />
       </div>
     </header>
   );

@@ -24,7 +24,6 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
   const onClose = propOnClose || closeAuthModal;
 
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
-  const [signupStep, setSignupStep] = useState<1 | 2>(1); // Step 1: Basic info, Step 2: Background
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error' | 'info'>('info');
@@ -35,12 +34,7 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
-  // Form states - Background Info
-  const [softwareExperience, setSoftwareExperience] = useState<string>('');
-  const [hardwareExperience, setHardwareExperience] = useState<string>('');
-  const [programmingLanguages, setProgrammingLanguages] = useState<string[]>([]);
-  const [roboticsBackground, setRoboticsBackground] = useState<string>('');
-  const [learningGoals, setLearningGoals] = useState<string>('');
+  // Removed background/profile preference fields for minimal signup
 
   const API_URL = getApiUrl();
 
@@ -49,18 +43,7 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
     setMessageType(type);
   };
 
-  const handleNextStep = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (signupStep === 1) {
-      // Validate basic info before moving to step 2
-      if (!email || !password || !name) {
-        showMessage('Please fill in all fields', 'error');
-        return;
-      }
-      setSignupStep(2);
-      setMessage('');
-    }
-  };
+  // Signup now uses a single compact form (name, email, password)
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,16 +63,10 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify({
-          email,
-          password,
-          name,
-          // Background information
-          softwareExperience,
-          hardwareExperience,
-          programmingLanguages,
-          roboticsBackground,
-          learningGoals
-        }),
+            email,
+            password,
+            name
+          }),
       });
 
       console.log('Sign up response status:', response.status);
@@ -122,31 +99,12 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
           setUser(data.user);
         }
 
-        // Create user profile with background information
-        try {
-          await fetch(`${API_URL}/api/users/profile/init`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({
-              softwareExperience,
-              hardwareExperience,
-              programmingLanguages,
-              roboticsBackground,
-              learningGoals,
-            }),
-          });
-          console.log('✅ Profile created successfully');
-        } catch (profileError) {
-          console.error('Profile creation failed:', profileError);
-          // Don't fail the sign-up if profile creation fails
-        }
+        // Profile creation with extra background fields removed for minimal signup
 
         setTimeout(() => {
           onAuthSuccess?.(data.user);
           onClose();
-          setSignupStep(1); // Reset for next time
-        }, 1000);
+        }, 600);
       } else {
         showMessage(`${data.message || 'Sign up failed'}`, 'error');
       }
@@ -258,50 +216,34 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
         <button className={styles.closeBtn} onClick={onClose}>×</button>
 
         {user ? (
-          // Logged In View - Modern Design
+          // Logged In View - Minimal profile
           <div className={styles.container}>
             <div className={styles.profileHeader}>
               <div className={styles.avatarCircle}>
-                <UserIcon size={32} />
+                <UserIcon size={28} />
               </div>
-              <h2 className={styles.welcomeTitle}>Welcome back!</h2>
-              <p className={styles.userName}>{user.name || user.email.split('@')[0]}</p>
+              <h2 className={styles.welcomeTitle}>{user.name || user.email.split('@')[0]}</h2>
+              <p className={styles.userEmail}>{user.email}</p>
             </div>
 
-            <div className={styles.userInfoCard}>
+            <div className={styles.simpleInfo}>
               <div className={styles.infoRow}>
-                <Mail size={18} className={styles.infoIcon} />
+                <Mail size={16} className={styles.infoIcon} />
                 <div className={styles.infoContent}>
                   <span className={styles.infoLabel}>Email</span>
                   <span className={styles.infoValue}>{user.email}</span>
                 </div>
               </div>
               <div className={styles.infoRow}>
-                <Shield size={18} className={styles.infoIcon} />
+                <Shield size={16} className={styles.infoIcon} />
                 <div className={styles.infoContent}>
                   <span className={styles.infoLabel}>Account Status</span>
-                  <span className={styles.statusBadge}>
-                    <CheckCircle size={14} />
-                    Active
-                  </span>
+                  <span className={styles.statusBadge}><CheckCircle size={12} /> Active</span>
                 </div>
               </div>
             </div>
 
-            <div className={styles.featuresList}>
-              <div className={styles.featureItem}>
-                <CheckCircle size={16} className={styles.featureIcon} />
-                <span>Personalized learning experience</span>
-              </div>
-              <div className={styles.featureItem}>
-                <CheckCircle size={16} className={styles.featureIcon} />
-                <span>Track your progress</span>
-              </div>
-              <div className={styles.featureItem}>
-                <CheckCircle size={16} className={styles.featureIcon} />
-                <span>Save your favorite lessons</span>
-              </div>
-            </div>
+            <div className={styles.modalDivider} />
 
             <button
               className={styles.signOutBtn}
@@ -315,21 +257,20 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
                 </>
               ) : (
                 <>
-                  <LogOut size={18} />
+                  <LogOut size={16} />
                   Sign Out
                 </>
               )}
             </button>
           </div>
         ) : (
-          // Sign In / Sign Up View
+            // Sign In / Sign Up View
           <div className={styles.container}>
             {message && (
               <div className={`${styles.message} ${styles[messageType]}`}>
                 {message}
               </div>
             )}
-
             {mode === 'signin' ? (
               // Sign In Form - Modern Design
               <>
@@ -394,24 +335,18 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
                   </button>
                 </form>
               </>
-            ) : signupStep === 1 ? (
-              // Sign Up Step 1: Basic Information - Modern Design
+            ) : (
+              // Simplified Sign Up Form - only name, email, password
               <>
                 <div className={styles.formHeader}>
                   <div className={styles.iconWrapper}>
-                    <Sparkles size={24} />
+                    <UserPlus size={24} />
                   </div>
-                  <h3 className={styles.formTitle}>Create Your Account</h3>
-                  <p className={styles.formSubtitle}>Let's get started with the basics</p>
+                  <h3 className={styles.formTitle}>Create Account</h3>
+                  <p className={styles.formSubtitle}>One quick step to get started</p>
                 </div>
 
-                <div className={styles.stepIndicator}>
-                  <div className={`${styles.stepDot} ${styles.active}`}>1</div>
-                  <div className={styles.stepLine}></div>
-                  <div className={styles.stepDot}>2</div>
-                </div>
-
-                <form onSubmit={handleNextStep}>
+                <form onSubmit={handleSignUp}>
                   <div className={styles.formGroup}>
                     <label>Full Name</label>
                     <div className={styles.inputWrapper}>
@@ -465,152 +400,19 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
                     <p className={styles.passwordHint}>Use at least 6 characters</p>
                   </div>
 
-                  <button type="submit" className={styles.submitBtn} disabled={password.length < 6}>
-                    Continue to Background Info
-                    <ArrowRight size={18} />
+                  <button type="submit" className={styles.submitBtn} disabled={password.length < 6 || !name}>
+                    {loading ? (
+                      <>
+                        <div className={styles.spinner}></div>
+                        Creating Account...
+                      </>
+                    ) : (
+                      <>
+                        Create Account
+                        <CheckCircle size={18} />
+                      </>
+                    )}
                   </button>
-                </form>
-              </>
-            ) : (
-              // Sign Up Step 2: Background Information - Modern Design
-              <>
-                <div className={styles.formHeader}>
-                  <div className={styles.iconWrapper}>
-                    <Target size={24} />
-                  </div>
-                  <h3 className={styles.formTitle}>Tell Us About Yourself</h3>
-                  <p className={styles.formSubtitle}>Help us personalize your learning experience</p>
-                </div>
-
-                <div className={styles.stepIndicator}>
-                  <div className={`${styles.stepDot} ${styles.completed}`}>
-                    <CheckCircle size={14} />
-                  </div>
-                  <div className={`${styles.stepLine} ${styles.completed}`}></div>
-                  <div className={`${styles.stepDot} ${styles.active}`}>2</div>
-                </div>
-
-                <form onSubmit={handleSignUp}>
-                  <div className={styles.formGroup}>
-                    <label>
-                      <Code size={16} className={styles.labelIcon} />
-                      Software Development Experience
-                    </label>
-                    <select
-                      value={softwareExperience}
-                      onChange={(e) => setSoftwareExperience(e.target.value)}
-                      className={styles.selectInput}
-                      required
-                    >
-                      <option value="">Select your experience level</option>
-                      <option value="none">No experience</option>
-                      <option value="beginner">Beginner (&lt; 1 year)</option>
-                      <option value="intermediate">Intermediate (1-3 years)</option>
-                      <option value="advanced">Advanced (3+ years)</option>
-                      <option value="professional">Professional (5+ years)</option>
-                    </select>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label>
-                      <Briefcase size={16} className={styles.labelIcon} />
-                      Hardware/Robotics Background
-                    </label>
-                    <select
-                      value={hardwareExperience}
-                      onChange={(e) => setHardwareExperience(e.target.value)}
-                      className={styles.selectInput}
-                      required
-                    >
-                      <option value="">Select your background</option>
-                      <option value="none">No experience</option>
-                      <option value="hobbyist">Hobbyist/DIY projects</option>
-                      <option value="academic">Academic/Research</option>
-                      <option value="professional">Professional/Industry</option>
-                    </select>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label>Programming Languages</label>
-                    <p className={styles.fieldDescription}>Select all that apply</p>
-                    <div className={styles.checkboxGrid}>
-                      {['Python', 'C++', 'JavaScript', 'Java', 'MATLAB', 'Other'].map((lang) => (
-                        <label key={lang} className={styles.checkboxCard}>
-                          <input
-                            type="checkbox"
-                            checked={programmingLanguages.includes(lang)}
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                setProgrammingLanguages([...programmingLanguages, lang]);
-                              } else {
-                                setProgrammingLanguages(programmingLanguages.filter(l => l !== lang));
-                              }
-                            }}
-                          />
-                          <span>{lang}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label>
-                      <Target size={16} className={styles.labelIcon} />
-                      Robotics Background
-                    </label>
-                    <select
-                      value={roboticsBackground}
-                      onChange={(e) => setRoboticsBackground(e.target.value)}
-                      className={styles.selectInput}
-                      required
-                    >
-                      <option value="">Select your background</option>
-                      <option value="none">No robotics experience</option>
-                      <option value="courses">Completed robotics courses</option>
-                      <option value="projects">Personal/hobby projects</option>
-                      <option value="research">Research experience</option>
-                      <option value="industry">Industry experience</option>
-                    </select>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label>Learning Goals (Optional)</label>
-                    <textarea
-                      value={learningGoals}
-                      onChange={(e) => setLearningGoals(e.target.value)}
-                      placeholder="What do you hope to achieve with this textbook? (e.g., build a robot, learn ROS, etc.)"
-                      rows={3}
-                      className={styles.textareaInput}
-                    />
-                  </div>
-
-                  <div className={styles.buttonGroup}>
-                    <button
-                      type="button"
-                      className={styles.backBtn}
-                      onClick={() => setSignupStep(1)}
-                    >
-                      <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
-                      Back
-                    </button>
-                    <button
-                      type="submit"
-                      className={styles.submitBtn}
-                      disabled={loading || password.length < 6}
-                    >
-                      {loading ? (
-                        <>
-                          <div className={styles.spinner}></div>
-                          Creating Account...
-                        </>
-                      ) : (
-                        <>
-                          Create Account
-                          <CheckCircle size={18} />
-                        </>
-                      )}
-                    </button>
-                  </div>
                 </form>
               </>
             )}
@@ -622,7 +424,6 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
                   type="button"
                   onClick={() => {
                     setMode(mode === 'signin' ? 'signup' : 'signin');
-                    setSignupStep(1);
                     setMessage('');
                   }}
                   className={styles.toggleBtn}
@@ -631,14 +432,7 @@ export default function AuthModal({ isOpen: propIsOpen, onClose: propOnClose, on
                 </button>
               </p>
             </div>
-
-            {mode === 'signup' && (
-              <p className={styles.hint}>
-                {signupStep === 1
-                  ? 'Create a new account to personalize your learning'
-                  : 'Help us personalize your learning experience'}
-              </p>
-            )}
+            {/* compact hint removed to keep modal minimal */}
           </div>
         )}
       </div>

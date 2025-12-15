@@ -130,14 +130,24 @@
 .navbar {
   background: #ffffff !important;
   border-bottom: 1px solid #e5e7eb !important;
-  box-shadow: none !important;
-  padding: 0.75rem 1rem !important;
+  box-shadow: 0 4px 18px rgba(16,24,40,0.06) !important;
+  padding: 0.5rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 64px !important;
+  z-index: 9999 !important;
 }
 
 .navbar__title {
   font-weight: 700 !important;
   color: #1a1a1a !important;
   font-size: 1.25rem !important;
+  line-height: 1 !important;
 }
 
 .navbar__link {
@@ -149,19 +159,52 @@
   color: var(--ifm-color-primary) !important;
 }
 
-.navbar__logo img {
-  border-radius: 6px;
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navbar__inner {
+  align-items: center !important;
 }
 
-/* ============================================
-   Modern Footer Styling - Blue Theme
-   ============================================ */
-
-.footer {
-  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%) !important;
-  border-top: none !important;
-  padding: 3rem 0 !important;
+/* Reserve space so page content isn't hidden under fixed navbar */
+.main-wrapper,
+.docMainContainer,
+.theme-doc-markdown {
+  padding-top: 72px !important;
 }
+
+.navbar__items {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.navbar__item {
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* Space out GitHub link and auth button in the navbar */
+.navbar__items a[href*="github.com"] {
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.navbar__items .authButton {
+  margin-left: 0.5rem !important;
+  margin-right: 0.25rem !important;
+}
+
+.navbar__link {
+  padding: 0.25rem 0.4rem !important;
+}
+
+.navbar__title {
+  margin-left: 6px !important;
+}
+ 
 
 .footer__title {
   color: #ffffff !important;

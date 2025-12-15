@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#00c2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="18" fill="#0f172a" />
+  <g transform="translate(18,18)">
+    <rect x="6" y="6" width="84" height="84" rx="12" fill="url(#g)" />
+    <g transform="translate(18,18)" fill="#0b1220">
+      <rect x="8" y="4" width="40" height="8" rx="3" fill="#071022" />
+      <rect x="8" y="56" width="40" height="8" rx="3" fill="#071022" />
+      <rect x="4" y="12" width="56" height="44" rx="6" fill="#0f172a" />
+    </g>
+    <circle cx="48" cy="36" r="10" fill="#071022" />
+    <g transform="translate(8,10)" fill="#071022">
+      <rect x="6" y="40" width="10" height="10" rx="2" />
+      <rect x="28" y="40" width="10" height="10" rx="2" />
+    </g>
+    <text x="18" y="72" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#071022">AI</text>
+  </g>
+</svg>

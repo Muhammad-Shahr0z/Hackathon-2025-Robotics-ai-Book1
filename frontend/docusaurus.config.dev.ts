@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
-  tagline: 'Learn robotics through ROS 2, simulation, and hands-on exercises',
+  tagline: 'Learn robotics through ROS 2, simulation, and hands-on exercises — build, simulate, and deploy real robots with step-by-step labs, practical projects, and clear examples.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -62,13 +62,20 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
+      logo: {
+          alt: 'Robotics AI',
+          // custom AI logo
+          src: 'img/logo.png',
+          href: '/',
+          target: '_self',
+      },
       title: 'Humanoid Robotic AI',
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Learn',
+          label: 'Book Chapters',
         },
         {
           href: 'https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1',

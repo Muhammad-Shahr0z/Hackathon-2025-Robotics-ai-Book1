@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="grad" x1="0" x2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#00c2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="18" fill="#0b1220" />
+  <g transform="translate(18,18)">
+    <rect width="84" height="84" rx="12" fill="url(#grad)" />
+    <!-- robot head -->
+    <g transform="translate(10,10)">
+      <rect x="8" y="6" width="56" height="52" rx="8" fill="#071022" opacity="0.95" />
+      <!-- eyes -->
+      <circle cx="22" cy="28" r="5" fill="#ffffff" />
+      <circle cx="42" cy="28" r="5" fill="#ffffff" />
+      <!-- mouth / grill -->
+      <rect x="20" y="40" width="20" height="4" rx="2" fill="#0b1220" />
+      <!-- antenna -->
+      <rect x="36" y="-6" width="4" height="8" rx="2" fill="#071022" />
+      <circle cx="38" cy="-8" r="3" fill="#ffffff" />
+    </g>
+    <!-- AI text -->
+    <text x="14" y="78" font-family="Inter, Roboto, sans-serif" font-size="18" font-weight="700" fill="#071022">AI</text>
+  </g>
+</svg>
