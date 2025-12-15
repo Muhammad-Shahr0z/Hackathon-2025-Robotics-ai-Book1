@@ -1,0 +1,48 @@
+# Image Asset Contract
+
+# This contract defines the expected behavior for image assets in the Docusaurus site
+# particularly for the robologo.png file that needs to work across environments
+
+openapi: 3.0.0
+info:
+  title: Image Asset API
+  version: 1.0.0
+  description: Contract for image assets in the Docusaurus-based textbook site
+
+paths:
+  /img/robologo.png:
+    get:
+      summary: Retrieve the robot logo image
+      responses:
+        '200':
+          description: The robologo.png image file
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Image not found
+
+components:
+  schemas:
+    ImageAsset:
+      type: object
+      properties:
+        path:
+          type: string
+          description: Relative path to the image from site root
+          example: "/img/robologo.png"
+        format:
+          type: string
+          description: Image format
+          example: "png"
+        accessibility:
+          type: object
+          properties:
+            altText:
+              type: string
+              description: Alternative text for screen readers
+            title:
+              type: string
+              description: Title attribute for the image
