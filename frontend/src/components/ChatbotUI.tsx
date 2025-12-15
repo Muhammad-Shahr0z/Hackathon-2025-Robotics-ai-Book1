@@ -55,7 +55,7 @@ const ChatbotUI: React.FC = () => {
 
   // Function to simulate API call (will be replaced with real API in the future)
  const callApi = async (prompt: string): Promise<string> => {
-  const res = await fetch('http://localhost:8000/ask', {
+  const res = await fetch('https://rag-chatbot-black.vercel.app/ask', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
