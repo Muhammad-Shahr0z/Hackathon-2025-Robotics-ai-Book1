@@ -5,6 +5,7 @@ log/
 devel/
 *.egg-info/
 dist/
+rag-chatbot-backend/env
 
 # Python
 __pycache__/

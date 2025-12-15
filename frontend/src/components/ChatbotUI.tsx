@@ -54,13 +54,25 @@ const ChatbotUI: React.FC = () => {
   };
 
   // Function to simulate API call (will be replaced with real API in the future)
-  const callApi = async (prompt: string): Promise<string> => {
-    // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+ const callApi = async (prompt: string): Promise<string> => {
+  const res = await fetch('http://localhost:8000/ask', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ "question": prompt }), // key matches backend
+  });
 
-    // Return a mock response
-    return `I received your message: "${prompt}". This is a mock response from the chatbot.`;
-  };
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+
+  const responseData = await res.json();
+  console.log('API response data:', responseData);
+  // Return response as string
+  return await responseData.answer;
+};
+
 
   // Function to handle sending a message
   const handleSendMessage = async () => {
@@ -295,12 +307,7 @@ const ChatbotUI: React.FC = () => {
                 )}
                 <div className="message-content-wrapper">
                   <div className="message-content">
-                    {message.content.split(" ").map((word, index, array) => (
-                      <React.Fragment key={index}>
-                        <span className="message-word">{word}</span>
-                        {index < array.length - 1 && " "}
-                      </React.Fragment>
-                    ))}
+                    {message.content}
                   </div>
                   <div className="message-timestamp">
                     {message.timestamp.toLocaleTimeString([], {

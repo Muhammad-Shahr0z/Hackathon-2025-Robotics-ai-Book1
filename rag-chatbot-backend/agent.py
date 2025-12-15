@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import cohere
 from qdrant_client import QdrantClient
 from agents import enable_verbose_stdout_logging
+from fastapi.middleware.cors import CORSMiddleware
 
 # -------------------------------
 # Load config & clients
@@ -15,10 +16,12 @@ enable_verbose_stdout_logging()
 load_dotenv()
 set_tracing_disabled(disabled=True)
 
-gemini_api_key = os.getenv("GEMINI_API_KEY")
+gemini_api_key = os.getenv("GEMINI_API_KEY_LATEST")
 cohere_client_key = os.getenv("COHERE")
 qdrant_api_key = os.getenv("QDRANT_API_KEY")
 qdrant_url = os.getenv("QDRANT_URL")
+
+
 
 provider = AsyncOpenAI(
     api_key=gemini_api_key,
@@ -75,7 +78,24 @@ If the answer is not present in the retrieved content, respond:
 # -------------------------------
 # FastAPI app
 # -------------------------------
+
+
 app = FastAPI()
+
+
+# CORS configuration
+origins = [
+    "http://localhost:3000",
+    "https://muhammad-shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,       # explicit origins
+    allow_credentials=True,
+    allow_methods=["*"],         # GET, POST, etc.
+    allow_headers=["*"],         # allow all headers
+)
 
 class QueryRequest(BaseModel):
     question: str
