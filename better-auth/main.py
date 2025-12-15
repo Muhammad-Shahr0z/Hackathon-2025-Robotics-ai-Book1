@@ -8,7 +8,7 @@ app = FastAPI()
 
 # Explicit frontend origins (replace with your deployed frontend URL)
 origins = [
-    "https://hackathon-2025-robotics-ai-book1-sr.vercel.app",
+    "https://muhammad-shahr0z.github.io",
     "http://localhost:3000"
   
 ]

@@ -17,10 +17,8 @@ const config: Config = {
   // Set the production url of your site here
   url: 'https://Muhammad-Shahr0z.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // Use root path for local development, subdirectory for production
-  baseUrl: process.env.NODE_ENV === 'production' || process.env.USE_SUBPATH === 'true'
-    ? '/Hackathon-2025-Robotics-ai-Book1/'
-    : '/',
+  // For local development, use root path for easier access
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
