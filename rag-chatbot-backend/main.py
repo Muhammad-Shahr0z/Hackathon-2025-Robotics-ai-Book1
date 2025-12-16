@@ -86,7 +86,7 @@ app = FastAPI()
 # CORS configuration
 origins = [
     "http://localhost:3000",
-    "https://muhammad-shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/"
+    "https://muhammad-shahr0z.github.io/"
 ]
 
 app.add_middleware(
