@@ -10,7 +10,7 @@ import { useAuth } from "@site/src/contexts/AuthContext";
 import { BookOpen, User } from "lucide-react";
 
 import styles from "./index.module.css";
-import ChatbotUI from "../components/ChatbotUI";
+
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -52,7 +52,7 @@ export default function Home(): ReactNode {
       <main>
         <HomepageFeatures />
       </main>
-        <ChatbotUI/>
+    
     </Layout>
   );
 }
