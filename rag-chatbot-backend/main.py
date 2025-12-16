@@ -25,11 +25,11 @@ qdrant_url = os.getenv("QDRANT_URL")
 
 provider = AsyncOpenAI(
     api_key=gemini_api_key,
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+    base_url="https://api.groq.com/openai/v1"
 )
 
 model = OpenAIChatCompletionsModel(
-    model="gemini-2.5-flash",
+    model="openai/gpt-oss-20b",
     openai_client=provider
 )
 
