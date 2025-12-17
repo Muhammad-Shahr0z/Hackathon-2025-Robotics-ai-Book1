@@ -1,0 +1,25 @@
+{
+  "id": "module-2/chapter-5",
+  "title": "Chapter 5: Lidar and Depth Sensing - Building Point Clouds",
+  "description": "Description: Use Lidar and depth cameras to create 3D representations of the environment.",
+  "source": "@site/docs/module-2/chapter-5.md",
+  "sourceDirName": "module-2",
+  "slug": "/module-2/chapter-5",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-5",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 5: Lidar and Depth Sensing - Building Point Clouds"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 4: Camera Systems and Image Processing in ROS 2",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4"
+  },
+  "next": {
+    "title": "Chapter 6: Sensor Fusion: Combining Data for Robust Perception",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-6"
+  }
+}

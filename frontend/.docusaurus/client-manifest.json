@@ -1,0 +1,437 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "237": [
+      237
+    ],
+    "285": [
+      61,
+      401,
+      869,
+      285
+    ],
+    "17896441": [
+      285,
+      869,
+      401
+    ],
+    "51279860": [
+      513
+    ],
+    "main": [
+      354,
+      869,
+      411
+    ],
+    "runtime~main": [
+      411,
+      869,
+      354
+    ],
+    "1c44967b": [
+      601
+    ],
+    "1df93b7f": [
+      869,
+      583
+    ],
+    "1f391b9e": [
+      285,
+      869,
+      61
+    ],
+    "2659bc16": [
+      529
+    ],
+    "2bb634c3": [
+      948
+    ],
+    "2f0fbda0": [
+      792
+    ],
+    "37a889cd": [
+      210
+    ],
+    "393be207": [
+      134
+    ],
+    "3982b094": [
+      868
+    ],
+    "5ad232c4": [
+      853
+    ],
+    "5e95c892": [
+      647
+    ],
+    "6030a3f1": [
+      643
+    ],
+    "6acc56f0": [
+      233
+    ],
+    "7a8b142b": [
+      658
+    ],
+    "9b44c66f": [
+      213
+    ],
+    "a09c2993": [
+      899
+    ],
+    "a7456010": [
+      235
+    ],
+    "a7bd4aaa": [
+      98
+    ],
+    "a94703ab": [
+      869,
+      48
+    ],
+    "aba21aa0": [
+      742
+    ],
+    "bd3299a3": [
+      308
+    ],
+    "c2d1f621": [
+      70
+    ],
+    "c7dfbc38": [
+      267
+    ],
+    "d2edc51d": [
+      757
+    ],
+    "d4f98d70": [
+      89
+    ],
+    "eb655d3f": [
+      273
+    ],
+    "fdac9fbf": [
+      384
+    ],
+    "styles": [
+      48,
+      61,
+      285,
+      354,
+      401,
+      411,
+      583,
+      869
+    ]
+  },
+  "assets": {
+    "48": {
+      "js": [
+        {
+          "file": "assets/js/a94703ab.97818046.js",
+          "hash": "bf4560e6a229c2ea",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/a94703ab.97818046.js"
+        }
+      ]
+    },
+    "61": {
+      "js": [
+        {
+          "file": "assets/js/1f391b9e.aafcbee4.js",
+          "hash": "c4a7291baddd6161",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/1f391b9e.aafcbee4.js"
+        }
+      ]
+    },
+    "70": {
+      "js": [
+        {
+          "file": "assets/js/c2d1f621.b754c4a8.js",
+          "hash": "6e73cc3d25f35b95",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/c2d1f621.b754c4a8.js"
+        }
+      ]
+    },
+    "89": {
+      "js": [
+        {
+          "file": "assets/js/d4f98d70.e60a6af7.js",
+          "hash": "4d13925907a3d43d",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/d4f98d70.e60a6af7.js"
+        }
+      ]
+    },
+    "98": {
+      "js": [
+        {
+          "file": "assets/js/a7bd4aaa.8d2a0ba1.js",
+          "hash": "cc7ad86c3e50cf02",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/a7bd4aaa.8d2a0ba1.js"
+        }
+      ]
+    },
+    "134": {
+      "js": [
+        {
+          "file": "assets/js/393be207.6402a17e.js",
+          "hash": "6bbb13428f7f63cf",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/393be207.6402a17e.js"
+        }
+      ]
+    },
+    "210": {
+      "js": [
+        {
+          "file": "assets/js/37a889cd.ba9c624c.js",
+          "hash": "078853d48701d8c1",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/37a889cd.ba9c624c.js"
+        }
+      ]
+    },
+    "213": {
+      "js": [
+        {
+          "file": "assets/js/9b44c66f.adfdad4f.js",
+          "hash": "18507823ed5e0753",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/9b44c66f.adfdad4f.js"
+        }
+      ]
+    },
+    "233": {
+      "js": [
+        {
+          "file": "assets/js/6acc56f0.a17f9ec8.js",
+          "hash": "d9e8485d175f03bd",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/6acc56f0.a17f9ec8.js"
+        }
+      ]
+    },
+    "235": {
+      "js": [
+        {
+          "file": "assets/js/a7456010.84f21e3a.js",
+          "hash": "3d6a8f91599b1684",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/a7456010.84f21e3a.js"
+        }
+      ]
+    },
+    "237": {
+      "js": [
+        {
+          "file": "assets/js/237.6d46921f.js",
+          "hash": "b31c60b66ae95d46",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/237.6d46921f.js"
+        }
+      ]
+    },
+    "267": {
+      "js": [
+        {
+          "file": "assets/js/c7dfbc38.636d758e.js",
+          "hash": "ee9dd6b876531f9a",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/c7dfbc38.636d758e.js"
+        }
+      ]
+    },
+    "273": {
+      "js": [
+        {
+          "file": "assets/js/eb655d3f.e1a20377.js",
+          "hash": "91e2aa2c308a5577",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/eb655d3f.e1a20377.js"
+        }
+      ]
+    },
+    "285": {
+      "js": [
+        {
+          "file": "assets/js/285.f58d3c3a.js",
+          "hash": "499553c67c4a8e98",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/285.f58d3c3a.js"
+        }
+      ]
+    },
+    "308": {
+      "js": [
+        {
+          "file": "assets/js/bd3299a3.883f476b.js",
+          "hash": "9308e06c981e9a23",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/bd3299a3.883f476b.js"
+        }
+      ]
+    },
+    "354": {
+      "js": [
+        {
+          "file": "assets/js/runtime~main.f870c85e.js",
+          "hash": "09f62d3eaf223831",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/runtime~main.f870c85e.js"
+        }
+      ]
+    },
+    "384": {
+      "js": [
+        {
+          "file": "assets/js/fdac9fbf.e4c0d5b3.js",
+          "hash": "b16f8a510681345c",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/fdac9fbf.e4c0d5b3.js"
+        }
+      ]
+    },
+    "401": {
+      "js": [
+        {
+          "file": "assets/js/17896441.a3bd778d.js",
+          "hash": "ca23fd632e88d5c6",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/17896441.a3bd778d.js"
+        }
+      ]
+    },
+    "411": {
+      "js": [
+        {
+          "file": "assets/js/main.1907a88a.js",
+          "hash": "b8328b45e57006d3",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/main.1907a88a.js"
+        }
+      ]
+    },
+    "513": {
+      "js": [
+        {
+          "file": "assets/js/51279860.d20393a2.js",
+          "hash": "bb5fbcf1b8cbd4f1",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/51279860.d20393a2.js"
+        }
+      ]
+    },
+    "529": {
+      "js": [
+        {
+          "file": "assets/js/2659bc16.3cba1229.js",
+          "hash": "e4d7498ddb099e66",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/2659bc16.3cba1229.js"
+        }
+      ]
+    },
+    "583": {
+      "js": [
+        {
+          "file": "assets/js/1df93b7f.3d3e5adb.js",
+          "hash": "5fa9dc87109f5b6b",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/1df93b7f.3d3e5adb.js"
+        }
+      ]
+    },
+    "601": {
+      "js": [
+        {
+          "file": "assets/js/1c44967b.df2fee73.js",
+          "hash": "c61466766f6677a3",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/1c44967b.df2fee73.js"
+        }
+      ]
+    },
+    "643": {
+      "js": [
+        {
+          "file": "assets/js/6030a3f1.9c989faf.js",
+          "hash": "a99b4ef75e400d95",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/6030a3f1.9c989faf.js"
+        }
+      ]
+    },
+    "647": {
+      "js": [
+        {
+          "file": "assets/js/5e95c892.19144bb6.js",
+          "hash": "ef5733cb34f2b2e9",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/5e95c892.19144bb6.js"
+        }
+      ]
+    },
+    "658": {
+      "js": [
+        {
+          "file": "assets/js/7a8b142b.bfdaa584.js",
+          "hash": "7e71749c0c4154c6",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/7a8b142b.bfdaa584.js"
+        }
+      ]
+    },
+    "742": {
+      "js": [
+        {
+          "file": "assets/js/aba21aa0.10c93593.js",
+          "hash": "5f27db0aee40332c",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/aba21aa0.10c93593.js"
+        }
+      ]
+    },
+    "757": {
+      "js": [
+        {
+          "file": "assets/js/d2edc51d.befca489.js",
+          "hash": "9eb9db0fe1332a31",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/d2edc51d.befca489.js"
+        }
+      ]
+    },
+    "792": {
+      "js": [
+        {
+          "file": "assets/js/2f0fbda0.8992b9bb.js",
+          "hash": "21ee60ac5a8e2bd7",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/2f0fbda0.8992b9bb.js"
+        }
+      ]
+    },
+    "853": {
+      "js": [
+        {
+          "file": "assets/js/5ad232c4.905241c9.js",
+          "hash": "b3fc1721061cb070",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/5ad232c4.905241c9.js"
+        }
+      ]
+    },
+    "868": {
+      "js": [
+        {
+          "file": "assets/js/3982b094.06c1b2bf.js",
+          "hash": "a3f8eef530249722",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/3982b094.06c1b2bf.js"
+        }
+      ]
+    },
+    "869": {
+      "css": [
+        {
+          "file": "assets/css/styles.c9a308f6.css",
+          "hash": "ef6886c2d59aa7e5",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/css/styles.c9a308f6.css"
+        }
+      ]
+    },
+    "899": {
+      "js": [
+        {
+          "file": "assets/js/a09c2993.6377d728.js",
+          "hash": "18a3f3851f221397",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/a09c2993.6377d728.js"
+        }
+      ]
+    },
+    "948": {
+      "js": [
+        {
+          "file": "assets/js/2bb634c3.e1985c2e.js",
+          "hash": "44259dd21b895398",
+          "publicPath": "/Hackathon-2025-Robotics-ai-Book1/assets/js/2bb634c3.e1985c2e.js"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "module-2/chapter-6",
+  "title": "Chapter 6: Sensor Fusion - Combining Data for Robust Perception",
+  "description": "Description: Integrate multiple sensors to create a comprehensive understanding of the environment.",
+  "source": "@site/docs/module-2/chapter-6.md",
+  "sourceDirName": "module-2",
+  "slug": "/module-2/chapter-6",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-6",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 6: Sensor Fusion - Combining Data for Robust Perception"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 5: Lidar and Depth Sensing: Building Point Clouds",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-5"
+  },
+  "next": {
+    "title": "Module 3: Motion, Control, and Navigation",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/"
+  }
+}

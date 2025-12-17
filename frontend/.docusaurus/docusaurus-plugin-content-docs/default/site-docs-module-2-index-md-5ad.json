@@ -1,0 +1,25 @@
+{
+  "id": "module-2/index",
+  "title": "Module 2: The Digital Twin (Gazebo & Unity)",
+  "description": "Focus: Physics simulation and environment building.",
+  "source": "@site/docs/module-2/index.md",
+  "sourceDirName": "module-2",
+  "slug": "/module-2/",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Module 2: The Digital Twin (Gazebo & Unity)"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 3: ROS 2 Tools: RViz, Gazebo, and the CLI",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-3"
+  },
+  "next": {
+    "title": "Chapter 4: Camera Systems and Image Processing in ROS 2",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4"
+  }
+}

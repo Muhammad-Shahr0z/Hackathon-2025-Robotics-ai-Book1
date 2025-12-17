@@ -1,0 +1,25 @@
+{
+  "id": "module-2/chapter-4",
+  "title": "Chapter 4: Camera Systems and Image Processing in ROS 2",
+  "description": "Description: Process visual data from cameras to enable robot perception.",
+  "source": "@site/docs/module-2/chapter-4.md",
+  "sourceDirName": "module-2",
+  "slug": "/module-2/chapter-4",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 4: Camera Systems and Image Processing in ROS 2"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 2: The Digital Twin (Gazebo & Unity)",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/"
+  },
+  "next": {
+    "title": "Chapter 5: Lidar and Depth Sensing: Building Point Clouds",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-5"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "module-5/capstone",
+  "title": "Capstone Project: The Autonomous Humanoid",
+  "description": "Description: Build a complete autonomous humanoid system that integrates perception, planning, and control.",
+  "source": "@site/docs/module-5/capstone.md",
+  "sourceDirName": "module-5",
+  "slug": "/module-5/capstone",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-5/capstone",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Capstone Project: The Autonomous Humanoid"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 5: Capstone Projects",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-5/"
+  }
+}

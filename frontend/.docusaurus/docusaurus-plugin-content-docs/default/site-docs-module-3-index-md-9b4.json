@@ -1,0 +1,25 @@
+{
+  "id": "module-3/index",
+  "title": "Module 3: Motion, Control, and Navigation",
+  "description": "Focus: Kinematics, locomotion, and autonomous navigation.",
+  "source": "@site/docs/module-3/index.md",
+  "sourceDirName": "module-3",
+  "slug": "/module-3/",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Module 3: Motion, Control, and Navigation"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 6: Sensor Fusion: Combining Data for Robust Perception",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-6"
+  },
+  "next": {
+    "title": "Chapter 7: Inverse Kinematics for Humanoid Arms",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-7"
+  }
+}

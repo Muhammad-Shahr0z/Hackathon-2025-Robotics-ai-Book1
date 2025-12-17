@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-module-2/chapter-4" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 4: Camera Systems and Image Processing in ROS 2 | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 4: Camera Systems and Image Processing in ROS 2 | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="Description: Process visual data from cameras to enable robot perception."><meta data-rh="true" property="og:description" content="Description: Process visual data from cameras to enable robot perception."><link data-rh="true" rel="icon" href="/Hackathon-2025-Robotics-ai-Book1/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4"><link data-rh="true" rel="alternate" href="https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4" hreflang="en"><link data-rh="true" rel="alternate" href="https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Module 2: The Digital Twin (Gazebo & Unity)","item":"https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/docs/module-2/"},{"@type":"ListItem","position":2,"name":"Chapter 4: Camera Systems and Image Processing in ROS 2","item":"https://Muhammad-Shahr0z.github.io/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4"}]}</script><link rel="stylesheet" href="/Hackathon-2025-Robotics-ai-Book1/assets/css/styles.c9a308f6.css">
+<script src="/Hackathon-2025-Robotics-ai-Book1/assets/js/runtime~main.f870c85e.js" defer="defer"></script>
+<script src="/Hackathon-2025-Robotics-ai-Book1/assets/js/main.1907a88a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/Hackathon-2025-Robotics-ai-Book1/img/logo.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" target="_self" href="/Hackathon-2025-Robotics-ai-Book1/"><div class="navbar__logo"><img src="/Hackathon-2025-Robotics-ai-Book1/img/logo.png" alt="Robotics AI" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/Hackathon-2025-Robotics-ai-Book1/img/logo.png" alt="Robotics AI" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Humanoid Robotic AI</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/Hackathon-2025-Robotics-ai-Book1/docs/">Book Chapters</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><button class="authButton_A4f_" disabled="">Loading...</button><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/Hackathon-2025-Robotics-ai-Book1/docs/"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-1/"><span title="Module 1: The Robotic Nervous System (ROS 2)" class="categoryLinkLabel_W154">Module 1: The Robotic Nervous System (ROS 2)</span></a><button aria-label="Collapse sidebar category &#x27;Module 1: The Robotic Nervous System (ROS 2)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-1"><span title="Chapter 1: Introduction to Embodied AI and Robotics" class="linkLabel_WmDU">Chapter 1: Introduction to Embodied AI and Robotics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-2"><span title="Chapter 2: ROS 2 Fundamentals: Nodes, Topics, and Services" class="linkLabel_WmDU">Chapter 2: ROS 2 Fundamentals: Nodes, Topics, and Services</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-3"><span title="Chapter 3: ROS 2 Tools: RViz, Gazebo, and the CLI" class="linkLabel_WmDU">Chapter 3: ROS 2 Tools: RViz, Gazebo, and the CLI</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/"><span title="Module 2: The Digital Twin (Gazebo &amp; Unity)" class="categoryLinkLabel_W154">Module 2: The Digital Twin (Gazebo &amp; Unity)</span></a><button aria-label="Collapse sidebar category &#x27;Module 2: The Digital Twin (Gazebo &amp; Unity)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-4"><span title="Chapter 4: Camera Systems and Image Processing in ROS 2" class="linkLabel_WmDU">Chapter 4: Camera Systems and Image Processing in ROS 2</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-5"><span title="Chapter 5: Lidar and Depth Sensing: Building Point Clouds" class="linkLabel_WmDU">Chapter 5: Lidar and Depth Sensing: Building Point Clouds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-6"><span title="Chapter 6: Sensor Fusion: Combining Data for Robust Perception" class="linkLabel_WmDU">Chapter 6: Sensor Fusion: Combining Data for Robust Perception</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-3/"><span title="Module 3: Motion, Control, and Navigation" class="categoryLinkLabel_W154">Module 3: Motion, Control, and Navigation</span></a><button aria-label="Expand sidebar category &#x27;Module 3: Motion, Control, and Navigation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-4/"><span title="Module 4: Advanced Topics and Real-World Deployment" class="categoryLinkLabel_W154">Module 4: Advanced Topics and Real-World Deployment</span></a><button aria-label="Expand sidebar category &#x27;Module 4: Advanced Topics and Real-World Deployment&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-5/"><span title="Module 5: Capstone Projects" class="categoryLinkLabel_W154">Module 5: Capstone Projects</span></a><button aria-label="Expand sidebar category &#x27;Module 5: Capstone Projects&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/Hackathon-2025-Robotics-ai-Book1/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/"><span>Module 2: The Digital Twin (Gazebo &amp; Unity)</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 4: Camera Systems and Image Processing in ROS 2</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Chapter 4: Camera Systems and Image Processing in ROS 2</h1></header>
+<p><strong>Description</strong>: Process visual data from cameras to enable robot perception.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="topics">Topics<a href="#topics" class="hash-link" aria-label="Direct link to Topics" title="Direct link to Topics" translate="no">​</a></h2>
+<ul>
+<li class="">Camera calibration and intrinsics</li>
+<li class="">Image transport in ROS 2</li>
+<li class="">OpenCV integration</li>
+<li class="">Real-time image processing pipelines</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="hands-on">Hands-on<a href="#hands-on" class="hash-link" aria-label="Direct link to Hands-on" title="Direct link to Hands-on" translate="no">​</a></h2>
+<p>Capture and process camera images in ROS 2.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="next-steps">Next Steps<a href="#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps" translate="no">​</a></h2>
+<p>Continue to <a class="" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-5">Chapter 5: Lidar and Depth Sensing</a>.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Module 2: The Digital Twin (Gazebo &amp; Unity)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/chapter-5"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 5: Lidar and Depth Sensing: Building Point Clouds</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#topics" class="table-of-contents__link toc-highlight">Topics</a></li><li><a href="#hands-on" class="table-of-contents__link toc-highlight">Hands-on</a></li><li><a href="#next-steps" class="table-of-contents__link toc-highlight">Next Steps</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learning Modules</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-1/">Module 1: ROS 2 Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-2/">Module 2: Sensors &amp; Perception</a></li><li class="footer__item"><a class="footer__link-item" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-3/">Module 3: Navigation &amp; SLAM</a></li><li class="footer__item"><a class="footer__link-item" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-4/">Module 4: Manipulation</a></li><li class="footer__item"><a class="footer__link-item" href="/Hackathon-2025-Robotics-ai-Book1/docs/module-5/">Module 5: Advanced Topics</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Repository<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1/issues" target="_blank" rel="noopener noreferrer" class="footer__link-item">Report Issues<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1/discussions" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discussions<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discourse.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Discourse<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://answers.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS Answers<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://docs.ros.org/en/humble/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS 2 Documentation<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://gazebosim.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Gazebo Simulator<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://moveit.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">MoveIt 2<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://navigation.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Nav2 Documentation<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/Muhammad-Shahr0z/Hackathon-2025-Robotics-ai-Book1/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="footer__link-item">Contributing Guide<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Textbook. Built with ❤️ by Muhammad Shahroz.</div></div></div></footer><button class="chat-toggle-button" aria-label="Open chat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"></path><path d="M7 9h10v2H7zm0 4h7v2H7z"></path></svg><span class="notification-dot"></span></button><style>
+        /* Base Styles */
+        * {
+          box-sizing: border-box;
+        }
+        
+        .chat-toggle-button {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #4a6cf7 0%, #6a8cff 100%);
+          color: white;
+          border: none;
+          font-size: 28px;
+          cursor: pointer;
+          box-shadow: 0 8px 32px rgba(74, 108, 247, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chat-toggle-button svg {
+          width: 32px;
+          height: 32px;
+        }
+
+        .chat-toggle-button:hover {
+          transform: scale(1.1) rotate(5deg);
+          box-shadow: 0 12px 40px rgba(74, 108, 247, 0.4);
+        }
+
+        .chat-toggle-button.hidden {
+          opacity: 0;
+          visibility: hidden;
+          transform: scale(0.5);
+        }
+
+        .notification-dot {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          width: 12px;
+          height: 12px;
+          background: #ff4757;
+          border-radius: 50%;
+          border: 2px solid white;
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+          }
+        }
+
+        .chat-window {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          width: 420px;
+          max-width: calc(100vw - 40px);
+          height: 620px;
+          max-height: calc(100vh - 100px);
+          background: white;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+          display: flex;
+          flex-direction: column;
+          z-index: 1001;
+          overflow: hidden;
+          animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(100px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        /* New Blue Header */
+        .chat-header-blue {
+          background: linear-gradient(135deg, #4a6cf7 0%, #6a8cff 100%);
+          padding: 20px 24px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: white;
+          min-height: 80px;
+          flex-shrink: 0;
+        }
+
+        .header-left {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          min-width: 0;
+        }
+
+        .ai-robot-icon {
+          width: 48px;
+          height: 48px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(10px);
+          flex-shrink: 0;
+        }
+
+        .ai-robot-icon svg {
+          width: 28px;
+          height: 28px;
+        }
+
+        .header-content {
+          min-width: 0;
+        }
+
+        .header-content h3 {
+          margin: 0;
+          font-size: 20px;
+          font-weight: 600;
+          letter-spacing: -0.5px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .header-subtitle {
+          margin: 4px 0 0 0;
+          font-size: 13px;
+          opacity: 0.9;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .header-subtitle:before {
+          content: '';
+          width: 8px;
+          height: 8px;
+          background: #4cd964;
+          border-radius: 50%;
+          display: inline-block;
+          flex-shrink: 0;
+        }
+
+        .header-right {
+          display: flex;
+          gap: 8px;
+          flex-shrink: 0;
+        }
+
+        .header-icon-button {
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: white;
+          transition: all 0.2s ease;
+          flex-shrink: 0;
+        }
+
+        .header-icon-button:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: scale(1.05);
+        }
+
+        .header-icon-button.close:hover {
+          background: rgba(255, 71, 87, 0.3);
+        }
+
+        .header-icon-button svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .chat-messages {
+          flex: 1;
+          padding: 24px;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          background: #f8fafd;
+          min-height: 0;
+        }
+
+        /* Welcome Message */
+        .welcome-message {
+          background: white;
+          border-radius: 16px;
+          padding: 28px;
+          text-align: center;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          margin-bottom: 20px;
+          animation: fadeInUp 0.5s ease;
+        }
+
+        .welcome-icon {
+          width: 64px;
+          height: 64px;
+          background: linear-gradient(135deg, #4a6cf7 0%, #6a8cff 100%);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 20px;
+        }
+
+        .welcome-icon svg {
+          width: 32px;
+          height: 32px;
+          color: white;
+        }
+
+        .welcome-message h4 {
+          margin: 0 0 8px 0;
+          font-size: 22px;
+          color: #2d3436;
+          word-break: break-word;
+        }
+
+        .welcome-message p {
+          margin: 0 0 24px 0;
+          color: #636e72;
+          font-size: 15px;
+          line-height: 1.5;
+          word-break: break-word;
+        }
+
+        .suggestions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+        }
+
+        .suggestion-chip {
+          background: #f1f5ff;
+          border: 1px solid #e0e7ff;
+          border-radius: 20px;
+          padding: 10px 18px;
+          font-size: 13px;
+          color: #4a6cf7;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+        }
+
+        .suggestion-chip:hover {
+          background: #4a6cf7;
+          color: white;
+          transform: translateY(-1px);
+        }
+
+        .message {
+          display: flex;
+          gap: 12px;
+          max-width: 100%;
+          animation: fadeIn 0.3s ease;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .user-message {
+          align-self: flex-end;
+          flex-direction: row-reverse;
+        }
+
+        .bot-message {
+          align-self: flex-start;
+        }
+
+        .message-sender-icon {
+          width: 36px;
+          height: 36px;
+          background: linear-gradient(135deg, #4a6cf7 0%, #6a8cff 100%);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 18px;
+          flex-shrink: 0;
+        }
+
+        .user-message .message-sender-icon {
+          background: #10b981;
+        }
+
+        .message-content-wrapper {
+          max-width: calc(100% - 48px);
+          min-width: 0;
+        }
+
+        .message-content {
+          padding: 14px 18px;
+          border-radius: 18px;
+          font-size: 14.5px;
+          line-height: 1.5;
+          position: relative;
+          word-break: break-word;
+          overflow-wrap: break-word;
+          white-space: pre-wrap;
+        }
+
+        .bot-message .message-content {
+          background: white;
+          color: #2d3436;
+          border-bottom-left-radius: 4px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-message .message-content {
+          background: linear-gradient(135deg, #4a6cf7 0%, #6a8cff 100%);
+          color: white;
+          border-bottom-right-radius: 4px;
+        }
+
+        /* Word-by-word styling for better text wrapping */
+        .message-word {
+          display: inline-block;
+          min-width: 0;
+          word-break: break-word;
+        }
+
+        .message-timestamp {
+          font-size: 11px;
+          color: #a0a0a0;
+          margin-top: 6px;
+          text-align: left;
+          white-space: nowrap;
+        }
+
+        .user-message .message-timestamp {
+          text-align: right;
+        }
+
+        .typing-indicator {
+          display: flex;
+          align-items: center;
+          padding: 8px 0;
+        }
+
+        .typing-indicator span {
+          height: 8px;
+          width: 8px;
+          background: #b8b8b8;
+          border-radius: 50%;
+          display: inline-block;
+          margin: 0 2px;
+          animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(1) {
+          animation-delay: 0s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+          0%, 60%, 100% {
+            transform: translateY(0);
+          }
+          30% {
+            transform: translateY(-5px);
+          }
+        }
+
+        .chat-input-area {
+          padding: 20px;
+          background: white;
+          border-top: 1px solid #f0f0f0;
+          display: flex;
+          gap: 12px;
+          align-items: center;
+          flex-shrink: 0;
+        }
+
+        .input-wrapper {
+          flex: 1;
+          position: relative;
+          min-width: 0;
+        }
+
+        .chat-input-area input {
+          width: 100%;
+          padding: 16px 52px 16px 20px;
+          border: 2px solid #e8e8e8;
+          border-radius: 16px;
+          font-size: 14.5px;
+          outline: none;
+          transition: all 0.3s ease;
+          background: #fafafa;
+          min-width: 0;
+        }
+
+        .chat-input-area input:focus {
+          border-color: #4a6cf7;
+          background: white;
+          box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.1);
+        }
+
+        .chat-input-area input::placeholder {
+          color: #a0a0a0;
+        }
+
+        .input-icons {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          display: flex;
+          gap: 8px;
+        }
+
+        .icon-button {
+          background: none;
+          border: none;
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: #666;
+          transition: all 0.2s ease;
+          flex-shrink: 0;
+        }
+
+        .icon-button:hover {
+          background: #f0f0f0;
+          color: #4a6cf7;
+        }
+
+        .icon-button svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        .send-button {
+          width: 52px;
+          height: 52px;
+          background: linear-gradient(135deg, #4a6cf7 0%, #6a8cff 100%);
+          border: none;
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: white;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+        }
+
+        .send-button:hover:not(:disabled) {
+          transform: scale(1.05);
+          box-shadow: 0 8px 20px rgba(74, 108, 247, 0.3);
+        }
+
+        .send-button:disabled {
+          background: #cccccc;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        .send-button svg {
+          width: 22px;
+          height: 22px;
+        }
+
+        /* Scrollbar Styling */
+        .chat-messages::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.1);
+          border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive design */
+        
+        /* Large Tablets and Small Laptops */
+        @media (max-width: 1024px) {
+          .chat-window {
+            width: 380px;
+          }
+          
+          .message {
+            max-width: 90%;
+          }
+        }
+        
+        /* Tablets */
+        @media (max-width: 768px) {
+          .chat-window {
+            width: 350px;
+            right: 20px;
+            bottom: 20px;
+          }
+          
+          .chat-toggle-button {
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+          }
+          
+          .header-content h3 {
+            font-size: 18px;
+          }
+          
+          .ai-robot-icon {
+            width: 40px;
+            height: 40px;
+          }
+          
+          .ai-robot-icon svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+        
+        /* Mobile Phones */
+        @media (max-width: 480px) {
+          .chat-window {
+            width: calc(100vw - 40px);
+            height: 70vh;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            margin: 0;
+            max-height: 80vh;
+          }
+          
+          .chat-messages {
+            padding: 16px;
+          }
+          
+          .chat-input-area {
+            padding: 16px;
+          }
+          
+          .chat-header-blue {
+            padding: 16px 20px;
+            min-height: 70px;
+          }
+          
+          .header-left {
+            gap: 12px;
+          }
+          
+          .ai-robot-icon {
+            width: 36px;
+            height: 36px;
+          }
+          
+          .ai-robot-icon svg {
+            width: 20px;
+            height: 20px;
+          }
+          
+          .header-content h3 {
+            font-size: 16px;
+          }
+          
+          .header-subtitle {
+            font-size: 11px;
+          }
+          
+          .header-icon-button {
+            width: 32px;
+            height: 32px;
+          }
+          
+          .header-icon-button svg {
+            width: 18px;
+            height: 18px;
+          }
+          
+          .message {
+            max-width: 95%;
+            gap: 8px;
+          }
+          
+          .message-sender-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+          }
+          
+          .message-content {
+            padding: 12px 16px;
+            font-size: 14px;
+          }
+          
+          .welcome-message {
+            padding: 20px;
+          }
+          
+          .welcome-message h4 {
+            font-size: 18px;
+          }
+          
+          .welcome-message p {
+            font-size: 14px;
+          }
+          
+          .suggestion-chip {
+            padding: 8px 14px;
+            font-size: 12px;
+          }
+          
+          .chat-input-area input {
+            padding: 14px 48px 14px 16px;
+            font-size: 14px;
+          }
+          
+          .send-button {
+            width: 48px;
+            height: 48px;
+          }
+          
+          .icon-button {
+            width: 28px;
+            height: 28px;
+          }
+          
+          .icon-button svg {
+            width: 16px;
+            height: 16px;
+          }
+          
+          .send-button svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        
+        /* Very Small Phones */
+        @media (max-width: 360px) {
+          .chat-window {
+            width: calc(100vw - 30px);
+            right: 15px;
+            left: 15px;
+            bottom: 15px;
+          }
+          
+          .header-left {
+            gap: 8px;
+          }
+          
+          .ai-robot-icon {
+            width: 32px;
+            height: 32px;
+          }
+          
+          .header-content h3 {
+            font-size: 15px;
+          }
+          
+          .suggestions {
+            gap: 6px;
+          }
+          
+          .suggestion-chip {
+            padding: 6px 12px;
+            font-size: 11px;
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        /* Landscape Mode for Mobile */
+        @media (max-height: 600px) and (orientation: landscape) {
+          .chat-window {
+            height: 80vh;
+            max-height: 80vh;
+          }
+          
+          .chat-header-blue {
+            padding: 12px 16px;
+            min-height: 60px;
+          }
+          
+          .chat-messages {
+            padding: 12px;
+          }
+        }
+      </style></div>
+</body>
+</html>

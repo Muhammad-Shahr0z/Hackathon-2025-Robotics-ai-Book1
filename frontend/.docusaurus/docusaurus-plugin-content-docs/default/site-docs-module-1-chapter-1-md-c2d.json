@@ -1,0 +1,26 @@
+{
+  "id": "module-1/chapter-1",
+  "title": "Chapter 1: Introduction to Embodied AI and Robotics",
+  "description": "Description: Explore the fundamental concepts of embodied intelligence and the role of robotics in the physical world.",
+  "source": "@site/docs/module-1/chapter-1.md",
+  "sourceDirName": "module-1",
+  "slug": "/module-1/chapter-1",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 1: Introduction to Embodied AI and Robotics",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 1: The Robotic Nervous System (ROS 2)",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/"
+  },
+  "next": {
+    "title": "Chapter 2: ROS 2 Fundamentals: Nodes, Topics, and Services",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-2"
+  }
+}

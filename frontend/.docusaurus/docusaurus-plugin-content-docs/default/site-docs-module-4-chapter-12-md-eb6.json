@@ -1,0 +1,25 @@
+{
+  "id": "module-4/chapter-12",
+  "title": "Chapter 12: Deploying to Real Hardware",
+  "description": "Description: Transfer your simulated systems to physical robots.",
+  "source": "@site/docs/module-4/chapter-12.md",
+  "sourceDirName": "module-4",
+  "slug": "/module-4/chapter-12",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-4/chapter-12",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 12: Deploying to Real Hardware"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 11: Vision-Language-Action (VLA) Models",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-4/chapter-11"
+  },
+  "next": {
+    "title": "Module 5: Capstone Projects",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-5/"
+  }
+}

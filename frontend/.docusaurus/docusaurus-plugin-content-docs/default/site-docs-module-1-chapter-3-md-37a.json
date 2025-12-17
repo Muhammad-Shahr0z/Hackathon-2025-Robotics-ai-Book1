@@ -1,0 +1,25 @@
+{
+  "id": "module-1/chapter-3",
+  "title": "Chapter 3: ROS 2 Tools - RViz, Gazebo, and the CLI",
+  "description": "Description: Learn the essential tools for visualizing, simulating, and debugging robot systems.",
+  "source": "@site/docs/module-1/chapter-3.md",
+  "sourceDirName": "module-1",
+  "slug": "/module-1/chapter-3",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-3",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 3: ROS 2 Tools - RViz, Gazebo, and the CLI"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 2: ROS 2 Fundamentals: Nodes, Topics, and Services",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-1/chapter-2"
+  },
+  "next": {
+    "title": "Module 2: The Digital Twin (Gazebo & Unity)",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-2/"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "module-3/chapter-9",
+  "title": "Chapter 9: Navigation Stack - From A to B Autonomously",
+  "description": "Description: Enable robots to navigate autonomously using the Nav2 stack.",
+  "source": "@site/docs/module-3/chapter-9.md",
+  "sourceDirName": "module-3",
+  "slug": "/module-3/chapter-9",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-9",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 9: Navigation Stack - From A to B Autonomously"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 8: Bipedal Locomotion: Walking and Balance",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-8"
+  },
+  "next": {
+    "title": "Module 4: Advanced Topics and Real-World Deployment",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-4/"
+  }
+}

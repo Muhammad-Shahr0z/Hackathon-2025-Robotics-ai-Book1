@@ -1,0 +1,25 @@
+{
+  "id": "module-3/chapter-7",
+  "title": "Chapter 7: Inverse Kinematics for Humanoid Arms",
+  "description": "Description: Calculate joint angles to achieve desired end-effector positions.",
+  "source": "@site/docs/module-3/chapter-7.md",
+  "sourceDirName": "module-3",
+  "slug": "/module-3/chapter-7",
+  "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-7",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 7: Inverse Kinematics for Humanoid Arms"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 3: Motion, Control, and Navigation",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/"
+  },
+  "next": {
+    "title": "Chapter 8: Bipedal Locomotion: Walking and Balance",
+    "permalink": "/Hackathon-2025-Robotics-ai-Book1/docs/module-3/chapter-8"
+  }
+}
