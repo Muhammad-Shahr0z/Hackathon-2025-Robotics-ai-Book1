@@ -1,0 +1,59 @@
+# API Contract: Language Switching for Urdu Translation Feature
+
+## Overview
+This contract defines the expected behavior for language switching functionality between English and Urdu in the Docusaurus-based textbook.
+
+## Endpoints
+Since this is a Docusaurus static site with client-side i18n, the "API" is primarily the configuration and file structure that enables language switching.
+
+### Configuration Contract
+```
+docusaurus.config.js
+├── i18n.defaultLocale: 'en'
+├── i18n.locales: ['en', 'ur']
+├── i18n.localeConfigs.en.label: 'English'
+├── i18n.localeConfigs.en.direction: 'ltr'
+├── i18n.localeConfigs.ur.label: 'اردو'
+└── i18n.localeConfigs.ur.direction: 'rtl'
+```
+
+### File Structure Contract
+```
+i18n/
+└── ur/
+    └── docusaurus-plugin-content-docs/
+        └── current/
+            └── [mirrors English docs structure]
+```
+
+## Expected Behaviors
+
+### 1. Language Switching
+- When user selects Urdu from locale dropdown → entire site content switches to Urdu
+- When user selects English from locale dropdown → entire site content switches to English
+- URL updates to reflect language (e.g., /ur/docs/intro for Urdu)
+- Navigation maintains selected language context
+
+### 2. RTL Layout
+- When Urdu is selected → layout switches to right-to-left
+- When English is selected → layout switches to left-to-right
+- Text alignment, navigation flow, and UI elements adjust accordingly
+
+### 3. Content Preservation
+- English content remains unchanged when Urdu is added
+- Code blocks remain in English regardless of selected language
+- Technical terminology preserved in English with optional Urdu explanations
+
+### 4. SEO & Navigation
+- URLs are language-specific (e.g., /docs/intro for English, /ur/docs/intro for Urdu)
+- Internal links respect current language selection
+- Default language is English unless user explicitly selects Urdu
+
+## Validation Criteria
+1. Language toggle appears in navbar
+2. Content switches completely between languages
+3. RTL layout works properly for Urdu
+4. All links work in selected language
+5. English content remains unchanged
+6. Code blocks stay in English
+7. URLs reflect selected language

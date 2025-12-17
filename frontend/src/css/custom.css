@@ -654,6 +654,75 @@ aside[class*="sidebar"]::-webkit-scrollbar {
   visibility: visible !important;
 }
 
+/* RTL Support for Urdu Language */
+html[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .navbar__items {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .navbar__item {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .menu__list,
+html[dir="rtl"] .menu__list-item {
+  padding-right: 0;
+  padding-left: var(--ifm-menu-link-padding-horizontal);
+}
+
+html[dir="rtl"] .table-of-contents {
+  border-left: none;
+  border-right: 1px solid #e5e7eb;
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+html[dir="rtl"] .table-of-contents__link {
+  margin-left: 0;
+  margin-right: -2px;
+}
+
+html[dir="rtl"] .pagination-nav__label {
+  text-align: right;
+}
+
+html[dir="rtl"] .alert {
+  border-left: none;
+  border-right: 4px solid currentColor;
+}
+
+html[dir="rtl"] .theme-last-updated {
+  text-align: right;
+}
+
+/* Preserve left alignment for code blocks in RTL */
+html[dir="rtl"] pre,
+html[dir="rtl"] code {
+  text-align: left;
+  direction: ltr;
+}
+
+html[dir="rtl"] .danger {
+  border-right: 4px solid #dc2626;
+}
+
+html[dir="rtl"] .success {
+  border-right: 4px solid #16a34a;
+}
+
+html[dir="rtl"] .info {
+  border-right: 4px solid #2563eb;
+}
+
+html[dir="rtl"] .warning {
+  border-right: 4px solid #d97706;
+}
+
 .table-of-contents {
   border-left: 1px solid #e5e7eb !important;
   padding-left: 1rem !important;
