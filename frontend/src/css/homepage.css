@@ -78,8 +78,10 @@ body {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #0f172a 0%, #1a2a4f 50%, #0f3a6f 100%);
-  padding: 80px 40px;
-  min-height: 700px;
+    /* Keep hero content below the fixed navbar and sized to viewport minus header/footer
+      Remove extra bottom padding so carousel sits flush below with a 10px gap provided by container */
+    padding: calc(var(--navbar-height) + var(--navbar-gap)) 40px 0;
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
   display: flex;
   align-items: center;
   justify-content: center;

@@ -5,7 +5,8 @@ import ChatbotUI from './ChatbotUI';
 
 export default function HomepageHero() {
   return (
-    <div className="hero">
+    <div
+     className="hero">
       <div className="hero-content">
         {/* Left: Hero Visual */}
         <div className="hero-visual">

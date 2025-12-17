@@ -6,7 +6,7 @@ import PersonalizeButton from '@site/src/components/PersonalizeButton/Personaliz
 
 type Props = WrapperProps<typeof LayoutType>;
 
-export default function LayoutWrapper(props: Props): JSX.Element {
+export default function LayoutWrapper(props: Props) {
   const [chapterTitle, setChapterTitle] = React.useState('');
   const [chapterContent, setChapterContent] = React.useState('');
 
