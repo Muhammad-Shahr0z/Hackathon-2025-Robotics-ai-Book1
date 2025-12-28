@@ -1,0 +1,451 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot Backend API
+  description: API for a Retrieval-Augmented Generation chatbot with OpenAI Agents
+  version: 1.0.0
+
+servers:
+  - url: https://api.rag-chatbot.example.com/v1
+    description: Production server
+  - url: https://staging-api.rag-chatbot.example.com/v1
+    description: Staging server
+
+paths:
+  /documents/upload:
+    post:
+      summary: Upload a document for processing
+      description: Upload a document that will be processed, embedded, and stored for RAG functionality
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Document file to upload (PDF, DOCX, TXT, etc.)
+                collection_id:
+                  type: string
+                  format: uuid
+                  description: ID of the collection to add the document to
+                metadata:
+                  type: object
+                  description: Additional metadata to store with the document
+      responses:
+        '200':
+          description: Document successfully uploaded and processing started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  document_id:
+                    type: string
+                    format: uuid
+                    description: ID of the uploaded document
+                  status:
+                    type: string
+                    enum: [pending, processing]
+                    description: Initial processing status
+                  message:
+                    type: string
+                    description: Status message
+        '400':
+          description: Invalid file format or request parameters
+        '401':
+          description: Unauthorized access
+        '413':
+          description: File too large
+
+  /collections:
+    post:
+      summary: Create a new document collection
+      description: Create a new collection to organize documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the collection
+                description:
+                  type: string
+                  description: Optional description of the collection
+      responses:
+        '200':
+          description: Collection successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection_id:
+                    type: string
+                    format: uuid
+                    description: ID of the created collection
+                  name:
+                    type: string
+                    description: Name of the collection
+                  created_date:
+                    type: string
+                    format: date-time
+                    description: When the collection was created
+        '401':
+          description: Unauthorized access
+
+    get:
+      summary: List user's document collections
+      description: Retrieve all document collections for the authenticated user
+      responses:
+        '200':
+          description: List of user's collections
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    created_date:
+                      type: string
+                      format: date-time
+                    total_documents:
+                      type: integer
+        '401':
+          description: Unauthorized access
+
+  /collections/{collection_id}:
+    get:
+      summary: Get collection details
+      description: Retrieve detailed information about a specific collection
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Collection details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  created_date:
+                    type: string
+                    format: date-time
+                  total_documents:
+                    type: integer
+                  total_chunks:
+                    type: integer
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Collection not found
+
+  /collections/{collection_id}/documents:
+    get:
+      summary: List documents in a collection
+      description: Retrieve all documents in a specific collection
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of documents in the collection
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    filename:
+                      type: string
+                    file_type:
+                      type: string
+                    file_size:
+                      type: integer
+                    upload_date:
+                      type: string
+                      format: date-time
+                    processing_status:
+                      type: string
+                      enum: [pending, processing, completed, failed]
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Collection not found
+
+  /chat/sessions:
+    post:
+      summary: Create a new chat session
+      description: Start a new conversation session with the RAG chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                collection_id:
+                  type: string
+                  format: uuid
+                  description: ID of the document collection to use for context
+                session_title:
+                  type: string
+                  description: Optional title for the session
+      responses:
+        '200':
+          description: Chat session successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  session_id:
+                    type: string
+                    format: uuid
+                    description: ID of the created session
+                  title:
+                    type: string
+                    description: Session title
+                  created_date:
+                    type: string
+                    format: date-time
+        '401':
+          description: Unauthorized access
+
+    get:
+      summary: List user's chat sessions
+      description: Retrieve all chat sessions for the authenticated user
+      responses:
+        '200':
+          description: List of user's chat sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    title:
+                      type: string
+                    created_date:
+                      type: string
+                      format: date-time
+                    last_interaction:
+                      type: string
+                      format: date-time
+                    active:
+                      type: boolean
+        '401':
+          description: Unauthorized access
+
+  /chat/sessions/{session_id}/messages:
+    post:
+      summary: Send a message in a chat session
+      description: Send a message to the RAG chatbot and receive a response
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The user's message content
+                context:
+                  type: object
+                  description: Additional context for the query
+      responses:
+        '200':
+          description: Response from the RAG chatbot
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message_id:
+                    type: string
+                    format: uuid
+                    description: ID of the response message
+                  content:
+                    type: string
+                    description: The chatbot's response
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        document_id:
+                          type: string
+                          format: uuid
+                        document_name:
+                          type: string
+                        chunk_index:
+                          type: integer
+                        content_preview:
+                          type: string
+                    description: List of document sources used in the response
+                  timestamp:
+                    type: string
+                    format: date-time
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Chat session not found
+
+    get:
+      summary: Get chat session messages
+      description: Retrieve all messages in a chat session
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of messages in the chat session
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    sender_type:
+                      type: string
+                      enum: [user, agent]
+                    content:
+                      type: string
+                    timestamp:
+                      type: string
+                      format: date-time
+                    sources:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          document_id:
+                            type: string
+                            format: uuid
+                          document_name:
+                            type: string
+        '401':
+          description: Unauthorized access
+        '404':
+          description: Chat session not found
+
+  /search:
+    post:
+      summary: Search documents using semantic search
+      description: Perform a semantic search across documents in a collection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: Search query
+                collection_id:
+                  type: string
+                  format: uuid
+                  description: ID of the collection to search in
+                top_k:
+                  type: integer
+                  default: 5
+                  description: Number of results to return
+                filters:
+                  type: object
+                  description: Additional filters for the search
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        document_id:
+                          type: string
+                          format: uuid
+                        document_name:
+                          type: string
+                        chunk_index:
+                          type: integer
+                        content:
+                          type: string
+                        similarity_score:
+                          type: number
+                          format: float
+                  query_embedding:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+                    description: Embedding vector of the query
+        '401':
+          description: Unauthorized access
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []
